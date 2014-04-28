@@ -43,13 +43,13 @@ class Basic
 		float getAmtSpent() const;
 			//Function to get the amount spent
 		void display(void) const;
-
+			//Function to display the details of the object
 		bool operator==(const Basic&obj) const;
-
+			//Function to overload the == operator
 		bool operator!=(const Basic&obj) const;
-
+			//Function to overload the != operator
 		void findAndDelete(vector<Basic>& basicVector);
-
+			//Function to find a delete an instance
 		void print(vector<Basic> myVector);
 			//Function to print the data
 
