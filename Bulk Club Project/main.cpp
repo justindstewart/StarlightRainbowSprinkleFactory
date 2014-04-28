@@ -26,6 +26,8 @@ int main()
 	//PrintHeader - Prints a heading for the project to a specified output
 	PrintHeader(cout, "Super Warehouse Store", 'A', 0);
 	
+	cout << "Testers" << endl;
+
 	//VARIABLES
 	int userType;
 	int managerCommand;
