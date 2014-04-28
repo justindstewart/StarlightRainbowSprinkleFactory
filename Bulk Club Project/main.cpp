@@ -25,26 +25,22 @@ int main()
 {
 	//PrintHeader - Prints a heading for the project to a specified output
 	PrintHeader(cout, "Super Warehouse Store", 'A', 0);
-	
-	cout << "Testers" << endl;
 
 	//VARIABLES
 	int userType;
 	int managerCommand;
 	int generalCommand; // could these all be merged into one variable?
-	vector<Basic> basicList;
-	vector<Preferred> prefList;
-	vector<History> histList;
-	Basic basicObj;
-	Preferred prefObj;
-	History histObj;
-
-	int searchMonth;
-	int searchDay;
-	int searchYear;
-	Date searchDate;
-
-	int searchID;
+	vector<Basic> basicList;	//IN - Vector to hold basic members
+	vector<Preferred> prefList;	//IN - Vector to hold preferred members
+	vector<History> histList;	//IN - Vector to hold shopping history
+	Basic basicObj;				//IN - Basic object variable
+	Preferred prefObj;			//IN - Preferred object variable
+	History histObj;			//IN - History object variable
+	int searchMonth;			//IN - Variable to hold month to search for
+	int searchDay;				//IN - Variable to hold day to search for
+	int searchYear;				//IN - Variable to hold year to search for
+	Date searchDate;			//IN - Variable to hold entire date
+	int searchID;				//IN - Variable to hold the ID to search
 
 	FillMemberList("warehouse shoppers.txt", basicList, prefList);
 	FillHistoryList("day1.txt", histList);
@@ -54,10 +50,10 @@ int main()
 	FillHistoryList("day5.txt", histList);
 
 
-//	cout << basicList.size() << endl;
-//	cout << prefList.size() << endl;
-//	cout << histList.size() << endl;
-//
+	cout << basicList.size() << endl;
+	cout << prefList.size() << endl;
+	cout << histList.size() << endl;
+
 //	basicObj.print(basicList);
 //
 //	prefObj.print(prefList);
