@@ -30,8 +30,9 @@ public:
 	float getRebate() const;
 		//Function to return the rebate amount to the calling function.
 	void display(void) const;
-
+		//Function to display the preferred member data
 	void print(vector<Preferred> prefVector);
+		//Function to loop through the vector with display function
 private:
 	float rebateAmount;		//Variable to hold the owed rebate amount
 };
