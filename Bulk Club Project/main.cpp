@@ -25,6 +25,8 @@ int main()
 {
 	//PrintHeader - Prints a heading for the project to a specified output
 	PrintHeader(cout, "Super Warehouse Store", 'A', 0);
+	
+	cout << "TEST OF THE DVCS" << endl;
 
 	//VARIABLES
 	int userType;
@@ -162,8 +164,6 @@ int main()
 	} while (toupper(yesOrNo) == 'Y');
 
 	return 0;
-
-//TEST1//
 }
 
 
