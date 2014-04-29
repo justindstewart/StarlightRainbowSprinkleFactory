@@ -6,7 +6,7 @@
  * SECTION		: TTH: 8:30a - 9:50a
  * DUE DATE		: May 13th, 2014
  ************************************************************************/
-//hi
+
 #include "header.h"
 
 Basic::Basic() : name("Pat Doe"), memNumber(11111), memType(0),
