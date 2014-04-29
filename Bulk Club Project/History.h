@@ -53,7 +53,17 @@ class History
 
 		// PRINT SALES REPORT BY DATE
 		void PrintSalesReportByDate (Date searchDateF,
-				                     vector<History> histVector);
+				                     vector<History> histVector,
+				                     vector<Basic> basicVector,
+				                     vector<Preferred> preferredVector,
+				                     Basic basicObj,
+				                     Preferred prefObj);
+
+		void PrintPurchasesByMember(int searchIdF,
+									vector<History> histVector,
+									vector<Basic> basicVector,
+									vector<Preferred> preferredVector);
+
 
 	private:
 		string  itemName;	//Variable to hold the item name
