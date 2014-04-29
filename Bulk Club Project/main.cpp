@@ -89,20 +89,26 @@ int main()
 
             searchMonth = ErrorCheckInt(  12,    1, "Enter a month : ");
 			searchDay   = ErrorCheckInt(  31,    1, "Enter a day   : ");
-			searchYear  = ErrorCheckInt(2014, 1990, "Enter a year  : ");
+			searchYear  = ErrorCheckInt(2014, 2013, "Enter a year  : ");
 
 			searchDate.SetDate(searchMonth, searchDay, searchYear);
+
+
 					// }
+			//if(search date in range)
 			// call print function here
-			histObj.PrintSalesReportByDate(searchDate, histList);
+			histObj.PrintSalesReportByDate(searchDate, histList, basicList, prefList, basicObj, prefObj);
+			//else
+			// output error not found
 
 			break;
 			case PRINTITEMSBYMEMBER: cout <<"Printing items purchased by "
 									 "which member?\n";
-									cout << "Please enter a member "
-											"ID number: ";
-									cin >> searchID;
+			searchID = ErrorCheckInt( 99999,
+									  10000,
+									 "Please enter a member ID number: ");
 									// call function here
+			histObj.PrintPurchasesByMember(searchID, histList, basicList, prefList);
 									 break;
 			case PRINTTOTALPURCHASES: cout << "Printing purchases\n";
 									 // call function here
