@@ -31,6 +31,12 @@ public:
 		//Function to return the rebate amount to the calling function.
 	void display(void) const;
 		//Function to display the preferred member data
+	bool operator==(const Preferred& obj) const;
+		//Function to overload the == operator
+	bool operator!=(const Preferred& obj) const;
+		//Function to overload the != operator
+	void findAndDelete(vector<Preferred>& prefVector, int tempId);
+		//Function to find a delete an instance
 	void print(vector<Preferred> prefVector);
 		//Function to loop through the vector with display function
 private:

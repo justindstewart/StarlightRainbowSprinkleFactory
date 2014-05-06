@@ -26,6 +26,8 @@ int main()
 	//PrintHeader - Prints a heading for the project to a specified output
 	PrintHeader(cout, "Super Warehouse Store", 'A', 0);
 
+	srand(time(NULL));
+
 	//VARIABLES
 	int userType;
 	int managerCommand;
@@ -50,16 +52,6 @@ int main()
 	FillHistoryList("day5.txt", histList);
 
 
-	cout << basicList.size() << endl;
-	cout << prefList.size() << endl;
-	cout << histList.size() << endl;
-
-//	basicObj.print(basicList);
-//
-//	prefObj.print(prefList);
-//
-//	histObj.print(histList);
-
 	char yesOrNo;
 
 	do
@@ -73,7 +65,7 @@ int main()
 		case MANAGER: managerCommand = ErrorCheckInt(7, 0, MANAGERMENU);
 					  cout << endl;
 					  break;
-		case GENERAL: generalCommand = ErrorCheckInt(4, 0, GENERALMENU);
+		case GENERAL: generalCommand = ErrorCheckInt(5, 0, GENERALMENU);
 					  cout << endl;
 					  break;
 		}
@@ -139,13 +131,19 @@ int main()
 					          "expires\n";
 							  // call function here
 							  break;
-			case ADDORDELETE: cout << "Adding or deleting members\n";
+			case ADDMEMBER:   cout << "Adding member:\n";
+							  AddMember(basicList, prefList);
+							  break;
+			case DELETEMEMBER:cout << "Deleting member:\n";
 							  // call function here
+							  DeleteMember(basicList, prefList);
 							  break;
 			case BASICTOPREF: cout << "Basic to Preferred?\n";
 							  // call function here
+			basicObj.print(basicList);
 							  break;
 			case PREFTOBASIC: cout << "Preferred to Basic?\n";
+			prefObj.print(prefList);
 						  	  // call function here
 							  break;
 			}
@@ -164,6 +162,10 @@ int main()
 		}
 
 	} while (toupper(yesOrNo) == 'Y');
+
+	basicObj.print(basicList);
+	cout << endl;
+	prefObj.print(prefList);
 
 	return 0;
 }

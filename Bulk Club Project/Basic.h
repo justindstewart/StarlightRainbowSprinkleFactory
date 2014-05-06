@@ -22,7 +22,7 @@ class Basic
 		Basic(string newName, int newNumber, bool newMemType,
 			  float newAmtSpent, int newMonth, int newDay, int newYear);
 			//Non-Default Constructor
-		~Basic();
+		virtual ~Basic();
 			//Destructor
 		void setName(string newName);
 			//Function to set the name of the member
@@ -44,20 +44,20 @@ class Basic
 			//Function to get the amount spent
 		void display(void) const;
 			//Function to display the details of the object
-		bool operator==(const Basic&obj) const;
+		bool operator==(const Basic& obj) const;
 			//Function to overload the == operator
-		bool operator!=(const Basic&obj) const;
+		bool operator!=(const Basic& obj) const;
 			//Function to overload the != operator
-		void findAndDelete(vector<Basic>& basicVector);
+		void findAndDelete(vector<Basic>& basicVector, int tempId);
 			//Function to find a delete an instance
-		void print(vector<Basic> myVector);
+		virtual void print(vector<Basic> myVector);
 			//Function to print the data
 
 	private:
 		string  name;		//Variable to hold the member name
 		int 	memNumber;	//Variable to hold the member number
 		bool    memType; 	//Boolean to hold the membership type
-		float	totalSpent;	//Variable to hold thet total spent
+		float	totalSpent;	//Variable to hold the total spent
 		Date 	expDate;	//Variable to hold the expiration date
 };
 

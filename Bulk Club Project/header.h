@@ -23,6 +23,7 @@
 #include <vector>
 #include <iterator>
 #include <stdlib.h>
+#include <time.h>
 #include "Date.h"
 #include "Preferred.h"
 #include "Basic.h"
@@ -53,9 +54,10 @@ const string MANAGERMENU = "What would you like to do? (Input 0 to exit)\n"
 const string GENERALMENU = "What would you like to do? (Input 0 to exit)\n"
 						   "1 - Find out whose membership expires this "
 						   "month\n"
-						   "2 - Add/delete members\n"
-						   "3 - Basic to preferred inquiries\n"
-						   "4 - Preferred to basic inquiries\n"
+						   "2 - Add member\n"
+						   "3 - Delete member\n"
+						   "4 - Basic to preferred inquiries\n"
+						   "5 - Preferred to basic inquiries\n"
 						   "Enter an option: ";
 const string CONTINUE    = "Would you like to do something else? ";
 const string PRINTOPTION = "Would you like to print report for preferred, "
@@ -88,7 +90,8 @@ enum GeneralMenu
 {
 	GENERALEXIT,
 	EXPIRATIONS,
-	ADDORDELETE,
+	ADDMEMBER,
+	DELETEMEMBER,
 	BASICTOPREF,
 	PREFTOBASIC
 };
@@ -151,5 +154,30 @@ void FillMemberList(string fileName,			  // IN - File name
 void FillHistoryList(string fileName,			 // IN - File name
 					vector<History>& histList);   // IN - History list
 
+/*************************************************************************
+ * AddMember
+ *	This function receives  a basic members vector list and a preferred
+ *   members vector list. It then prompts the user for some basic info
+ *   and adds a member to the appropriate list.
+ ************************************************************************/
+void AddMember(vector<Basic>& basicList,	 // IN - Basic list
+			   vector<Preferred>& prefList); // IN - Preferred list
+
+/*************************************************************************
+ * FUNCTION AddMember
+ * _______________________________________________________________________
+ *	This function receives  a basic members vector list and a preferred
+ *   members vector list. It then prompts the user for some basic info
+ *   and adds a member to the appropriate list.
+ * _______________________________________________________________________
+ * PRE-CONDITIONS
+ * 		basicList	: Basic member vector has to be previously defined
+ * 		prefList	: Preferred member vector has to be previously defined
+ *
+ * POST-CONDTIONS
+ * 		This function returns nothing
+ ************************************************************************/
+void DeleteMember(vector<Basic>& basicList,	 // IN - Basic list
+			   vector<Preferred>& prefList);// IN - Preferred list
 
 #endif /* HEADER_H_ */

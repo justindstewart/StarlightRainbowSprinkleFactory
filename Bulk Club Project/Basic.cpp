@@ -76,9 +76,9 @@ float Basic::getAmtSpent() const
 
 void Basic::display(void) const
 {
-	cout << "Name: " << name << endl;
-	cout << "Id: "	<< memNumber << endl;
-	cout << "Status: ";
+	cout << setw(30) << name;
+	cout << setw(15) << memNumber;
+	cout << setw(15);
 	if(memType == 0)
 	{
 		cout << "Basic";
@@ -87,40 +87,63 @@ void Basic::display(void) const
 	{
 		cout << "Preferred";
 	}
-	cout << endl;
-	cout << "Total Spent: " << totalSpent << endl;
-	cout << "Exp. Date: ";
+	cout << "$" << setw(14) << totalSpent;
+	cout << left;
 	expDate.PrintDate();
-	cout << endl;
 }
 
-bool Basic::operator==(const Basic&obj) const
+bool Basic::operator==(const Basic& obj) const
 {
 	return(memNumber==obj.memNumber);
 }
 
-bool Basic::operator!=(const Basic&obj) const
+bool Basic::operator!=(const Basic& obj) const
 {
 	return(memNumber!=obj.memNumber);
 }
 
-void Basic::findAndDelete(vector<Basic> &basicVector)
+void Basic::findAndDelete(vector<Basic> &basicVector, int tempId)
 {
 	vector<Basic>::iterator index;
 	Basic obj;
-	index = find(basicVector.begin(), basicVector.end(), *this);
-	cout << "Found item: " << index->memNumber << endl;
-	index=basicVector.erase(index);
-	cout << "\nNumber of items in the vector = " << basicVector.size() << endl;
-	cout << "Delete complete" << endl;
+
+	for(index = basicVector.begin(); index != basicVector.end(); index++)
+	{
+		if(tempId == index->memNumber)
+		{
+			cout << "Found item: " << index->memNumber;
+			basicVector.erase(index);
+		}
+	}
+//	Basic obj;
+//	index = find(basicVector.begin(), basicVector.end());
+//	if(index != basicVector.end())
+//	{
+//		cout << "Found item "  << endl;
+//		index=basicVector.erase(index);
+//		cout << "\nNumber of items in the vector = " << basicVector.size() << endl;
+//		cout << "Delete complete" << endl;
+//	}
 }
 
 void Basic::print(vector<Basic> basicVector)
 {
 	vector<Basic>::iterator index;
 
+	cout << left;
+	cout << endl;
+	cout << setw(30) << "MEMBER NAME";
+	cout << setw(15) << "MEMBER NUMBER";
+	cout << setw(15) << "MEMBER STATUS";
+	cout << setw(15) << "TOTAL SPENT";
+	cout << setw(15) << "EXP DATE";
+	cout << endl;
+	cout << setfill('-') << setw(90) << "-" << endl;
+	cout << setfill(' ');
+
 	for(index = basicVector.begin(); index != basicVector.end(); index++)
 	{
+		cout << endl;
 		index->display();
 	}
 }
