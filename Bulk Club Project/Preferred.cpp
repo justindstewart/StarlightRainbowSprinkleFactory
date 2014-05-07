@@ -43,55 +43,67 @@ float Preferred::getRebate() const
 	return rebateAmount;
 }//End getRebate
 
+bool Preferred::checkDowngrade() const
+{
+	bool downgrade;			//CALC - Boolean
+	downgrade = false;
+
+	if(rebateAmount < 10)
+	{
+		downgrade = true;
+	}
+
+	return downgrade;
+}
+
 void Preferred::display() const
 {
 	Basic::display();
 	cout << setw(5) << " ";
 	cout << "$" << setw(15) << rebateAmount;
 
-}
+}//End display
 
 bool Preferred::operator==(const Preferred& obj) const
 {
 	return(getNumber()==obj.getNumber());
-}
+}//End overload == operator
 
 bool Preferred::operator!=(const Preferred& obj) const
 {
 	return(getNumber()!=obj.getNumber());
-}
+}//End overload != operator
 
 
 void Preferred::findAndDelete(vector<Preferred>& prefVector, int tempId)
 {
-	vector<Preferred>::iterator index;
-	Preferred obj;
+	vector<Preferred>::iterator index;	//CALC - Iterator
+	bool found;							//CALC - Boolean
 
-	for(index = prefVector.begin(); index != prefVector.end(); index++)
+	found = false;
+	index = prefVector.begin();
+	//WHILE - Loops through vector until member is found
+	while(!found && index != prefVector.end())
 	{
+		//IF - Checks if the passed ID is identical to the current index
 		if(tempId == index->getNumber())
 		{
-			cout << "Found item: " << index->getNumber();
+			cout << "Deleting member number: " << tempId;
 			prefVector.erase(index);
-		}
-	}
-//	vector<Preferred>::iterator index;
-//	Preferred obj;
-//	index = find(prefVector.begin(), prefVector.end());
-//	if(index != prefVector.end())
-//	{
-//		cout << "Found item " << endl;
-//		index=prefVector.erase(index);
-//		cout << "\nNumber of items in the vector = " << prefVector.size() << endl;
-//		cout << "Delete complete" << endl;
-//	}
-}
+			found = true;
+		}//End if
+
+		index++;
+	}//End while
+
+}//End findAndDelete
 
 void Preferred::print(vector<Preferred> prefVector)
 {
-	vector<Preferred>::iterator index;
+	vector<Preferred>::iterator index;	//CALC - Iterator
 
 	cout << left;
+	cout << fixed << setprecision(2);
 	cout << endl;
 	cout << setw(30) << "MEMBER NAME";
 	cout << setw(15) << "MEMBER NUMBER";
@@ -103,7 +115,7 @@ void Preferred::print(vector<Preferred> prefVector)
 	cout << setfill('-') << setw(105) << "-" << endl;
 	cout << setfill(' ');
 
-
+	//FOR - Loops through vector list and displays each element
 	for(index = prefVector.begin(); index != prefVector.end(); index++)
 	{
 		cout << endl;

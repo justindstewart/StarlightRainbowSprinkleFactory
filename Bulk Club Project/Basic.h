@@ -40,6 +40,9 @@ class Basic
 			//Function to get the member number
 		bool getType() const;
 			//Function to get the member type
+		bool checkUpgrade() const;
+			//Function to check if rebate amount would be more then the
+			//cost of the difference of price of the preferred status
 		float getAmtSpent() const;
 			//Function to get the amount spent
 		void display(void) const;

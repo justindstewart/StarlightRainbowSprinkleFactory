@@ -172,20 +172,21 @@ void AddMember(vector<Basic>& basicList,	 // IN - Basic list
 			   vector<Preferred>& prefList); // IN - Preferred list
 
 /*************************************************************************
- * FUNCTION AddMember
- * _______________________________________________________________________
+ * DeleteMember
  *	This function receives  a basic members vector list and a preferred
  *   members vector list. It then prompts the user for some basic info
- *   and adds a member to the appropriate list.
- * _______________________________________________________________________
- * PRE-CONDITIONS
- * 		basicList	: Basic member vector has to be previously defined
- * 		prefList	: Preferred member vector has to be previously defined
- *
- * POST-CONDTIONS
- * 		This function returns nothing
+ *   and deletes a member from the list.
  ************************************************************************/
-void DeleteMember(vector<Basic>& basicList,	 // IN - Basic list
-			   vector<Preferred>& prefList);// IN - Preferred list
+void DeleteMember(vector<Basic>& basicList,	 	// IN - Basic list
+			      vector<Preferred>& prefList); // IN - Preferred list
 
+/*************************************************************************
+ * FillTotals
+ *	This function receives  a basic members vector list, a preferred
+ *   members vector list and a history vector list. It then calculates the
+ *   total amount spent for the member classes.
+ ************************************************************************/
+void FillTotals(vector<Basic>& basicList,	//IN - Basic list
+			   vector<Preferred>& prefList,	//IN - Preferred list
+			   vector<History>& histList);	//IN - History list
 #endif /* HEADER_H_ */

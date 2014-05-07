@@ -26,8 +26,6 @@ int main()
 	//PrintHeader - Prints a heading for the project to a specified output
 	PrintHeader(cout, "Super Warehouse Store", 'A', 0);
 
-	srand(time(NULL));
-
 	//VARIABLES
 	int userType;
 	int managerCommand;
@@ -51,6 +49,7 @@ int main()
 	FillHistoryList("day4.txt", histList);
 	FillHistoryList("day5.txt", histList);
 
+	FillTotals(basicList, prefList, histList);
 
 	char yesOrNo;
 

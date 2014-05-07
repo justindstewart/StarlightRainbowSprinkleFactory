@@ -34,6 +34,7 @@ class History
 			//Function to set the new quantity
 		void setBuyDate(int newMonth, int newDay, int newYear);
 			//Function to set the purchase date
+		float calculateTotal(vector<History> histVector, int memberId) const;
 		string getName() const;
 			//Function to get the item name
 		int getNumber() const;

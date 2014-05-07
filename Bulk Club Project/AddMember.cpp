@@ -26,8 +26,6 @@
 void AddMember(vector<Basic>& basicList,	 // IN - Basic list
 			   vector<Preferred>& prefList)// IN - Preferred list
 {
-	Basic tempBasic;	//IN	- Temporary basic list
-	Preferred tempPref;	//IN	- Temporary preferred list
 	string tempName;	//IN 	- Temporary name variable
 	int    tempId;		//IN 	- Temporary id variable
 	char   tempStatus;	//IN	- Temporary status variable
@@ -41,18 +39,15 @@ void AddMember(vector<Basic>& basicList,	 // IN - Basic list
 	getline(cin, tempName);
 
 	cout << "Please enter an expiration date: " << endl;
-	cout << "Month: ";
-	cin >> monthExp;
-	cout << "Day: ";
-	cin >> dayExp;
-	cout << "Year: ";
-	cin >> yearExp;
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	monthExp = ErrorCheckInt(12, 1, "Month: ");
+	dayExp = ErrorCheckInt(31, 1, "Day: ");
+	yearExp = ErrorCheckInt(2031, 2014, "Year: ");
 
 	//IF - Checks if status is preferred or basic, inputs into correct
 	//		list.
 	if(tempStatus == 'P')
 	{
+		Preferred tempPref;	//IN	- Temporary preferred list
 		tempPref.setName(tempName);
 		tempPref.setNumber(tempId);
 		tempPref.setMemType(1);
@@ -63,6 +58,7 @@ void AddMember(vector<Basic>& basicList,	 // IN - Basic list
 	}
 	else if(tempStatus == 'B')
 	{
+		Basic tempBasic;	//IN	- Temporary basic list
 		tempBasic.setName(tempName);
 		tempBasic.setNumber(tempId);
 		tempBasic.setMemType(0);

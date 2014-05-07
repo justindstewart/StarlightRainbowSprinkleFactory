@@ -54,7 +54,28 @@ void History::setQuantity(int newQuantity)
 void History::setBuyDate(int newMonth, int newDay, int newYear)
 {
 	buyDate.SetDate(newMonth, newDay, newYear);
-}
+}//End setBuyDate
+
+float History::calculateTotal(vector<History> histVector, int memberId) const
+{
+	float totalSpent;	//CALC & OUT - Calculates and outputs total spent
+	vector<History>::iterator index;	//CALC - Iterator
+
+	totalSpent = 0;
+
+	//FOR - Loops through history vector list until index is at end
+	for(index = histVector.begin(); index != histVector.end(); index++)
+	{
+		//IF - Compares member ID to passed ID and adds up total spent
+		if(index->memNumber == memberId)
+		{
+			totalSpent += (index->cost * index->quantity);
+		}//End if
+	}//End for
+
+	return totalSpent;
+}//End calculateTotal
+
 string History::getName() const
 {
 	return itemName;
@@ -88,8 +109,10 @@ void History::display(void) const
 
 void History::print(vector<History> histVector)
 {
-	vector<History>::iterator index;
+	vector<History>::iterator index;	//CALC - Iterator
 
+	//FOR - Loops through history vector until index is at the end,
+	//		displays each instance.
 	for(index = histVector.begin(); index != histVector.end(); index++)
 	{
 		index->display();
@@ -99,12 +122,12 @@ void History::print(vector<History> histVector)
 bool History::operator==(const History&obj) const
 {
 	return (buyDate== obj.buyDate);
-}
+}//End overload == operator
 
 bool History::operator!=(const History&obj) const
 {
 	return (buyDate!=obj.buyDate);
-}
+}//End overload != operator
 
 
 // PRINT SALES REPORT BY DATE

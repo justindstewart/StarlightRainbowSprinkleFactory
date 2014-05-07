@@ -29,6 +29,9 @@ public:
 		//Function to manually set a rebate amount
 	float getRebate() const;
 		//Function to return the rebate amount to the calling function.
+	bool checkDowngrade() const;
+		//Function to check if member did not have a large enough rebate
+		//amount to warrant preferred status.
 	void display(void) const;
 		//Function to display the preferred member data
 	bool operator==(const Preferred& obj) const;

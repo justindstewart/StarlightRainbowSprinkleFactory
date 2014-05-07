@@ -12,9 +12,9 @@
 /*************************************************************************
  * FUNCTION AddMember
  * _______________________________________________________________________
- *	This function receives  a basic members vector list and a preferred
- *   members vector list. It then prompts the user for some basic info
- *   and adds a member to the appropriate list.
+ *	This function receives  a basic members vector list, a preferred
+ *	 members vector list and a value to search for. It then prompts the
+ *	 user for some basic info and adds a member to the appropriate list.
  * _______________________________________________________________________
  * PRE-CONDITIONS
  * 		basicList	: Basic member vector has to be previously defined
@@ -23,25 +23,34 @@
  * POST-CONDTIONS
  * 		This function returns nothing
  ************************************************************************/
-bool CheckUniqueInt(vector<Basic>& basicList,	 // IN - Basic list
-			   vector<Preferred>& prefList,
-			   int value)// IN - Preferred list
+bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
+			   	    vector<Preferred>& prefList,// IN - Preferred list
+			   	    int value)					// IN - Search value
 {
-//	bool found;
-//	vector<Basic>::iterator basicIter;
-//	vector<Preferred>::iterator prefIter;
-//
-//	basicIter = find(basicList.begin(), basicList.end(), value);
-//	prefIter = find(prefList.begin(), prefList.end(), value);
-//
-//	if(basicIter != basicList.end() || prefIter != prefList.end())
-//	{
-//		found = true;
-//	}
-//	else
-//	{
-//		found = false;
-//	}
-//
-//	return found;
+	bool found;
+	vector<Basic>::iterator basicIter;
+	vector<Preferred>::iterator prefIter;
+
+	found = false;
+
+	prefIter = prefList.begin();
+	basicIter = basicList.begin();
+
+	while(!found && basicIter != basicList.end())
+	{
+		if(basicIter->getNumber() == value)
+		{
+			found = true;
+		}
+	}
+
+	while(!found && prefIter != prefList.end())
+	{
+		if(prefIter->getNumber() == value)
+		{
+			found = true;
+		}
+	}
+
+	return found;
 }

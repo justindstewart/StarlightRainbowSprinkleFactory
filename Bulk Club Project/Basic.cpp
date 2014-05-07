@@ -69,6 +69,21 @@ bool Basic::getType() const
 	return memType;
 }//End getType
 
+bool Basic::checkUpgrade() const
+{
+	bool upgrade;			//CALC - Boolean
+	upgrade = false;
+
+	//IF - Checks to see if the rebate amount is more then the cost of the
+	//		upgrade.
+	if((totalSpent * .05) > 10)
+	{
+		upgrade = true;
+	}
+
+	return upgrade;
+}//End checkUpgrade
+
 float Basic::getAmtSpent() const
 {
 	return totalSpent;
@@ -79,6 +94,7 @@ void Basic::display(void) const
 	cout << setw(30) << name;
 	cout << setw(15) << memNumber;
 	cout << setw(15);
+	//IF - Checks for member type and outputs
 	if(memType == 0)
 	{
 		cout << "Basic";
@@ -86,49 +102,47 @@ void Basic::display(void) const
 	else
 	{
 		cout << "Preferred";
-	}
+	}//End if
 	cout << "$" << setw(14) << totalSpent;
 	cout << left;
 	expDate.PrintDate();
-}
+}//End display
 
 bool Basic::operator==(const Basic& obj) const
 {
 	return(memNumber==obj.memNumber);
-}
+}//End overload == operator
 
 bool Basic::operator!=(const Basic& obj) const
 {
 	return(memNumber!=obj.memNumber);
-}
+}//End overload != operator
 
 void Basic::findAndDelete(vector<Basic> &basicVector, int tempId)
 {
-	vector<Basic>::iterator index;
-	Basic obj;
+	vector<Basic>::iterator index;		//CALC - Iterator
+	bool found;							//CALC - Boolean
 
-	for(index = basicVector.begin(); index != basicVector.end(); index++)
+	found = false;
+	index = basicVector.begin();
+	//WHILE - Loops through vector until member is found
+	while(!found && index != basicVector.end())
 	{
+		//IF - Checks if the passed ID is identical to the current index
 		if(tempId == index->memNumber)
 		{
-			cout << "Found item: " << index->memNumber;
+			cout << "Deleting member number: " << tempId;
 			basicVector.erase(index);
-		}
-	}
-//	Basic obj;
-//	index = find(basicVector.begin(), basicVector.end());
-//	if(index != basicVector.end())
-//	{
-//		cout << "Found item "  << endl;
-//		index=basicVector.erase(index);
-//		cout << "\nNumber of items in the vector = " << basicVector.size() << endl;
-//		cout << "Delete complete" << endl;
-//	}
+			found = true;
+		}//End if
+
+		index++;
+	}//End while
 }
 
 void Basic::print(vector<Basic> basicVector)
 {
-	vector<Basic>::iterator index;
+	vector<Basic>::iterator index;	//CALC - Iterator
 
 	cout << left;
 	cout << endl;
@@ -141,6 +155,7 @@ void Basic::print(vector<Basic> basicVector)
 	cout << setfill('-') << setw(90) << "-" << endl;
 	cout << setfill(' ');
 
+	//FOR - Loops through vector list and displays each element
 	for(index = basicVector.begin(); index != basicVector.end(); index++)
 	{
 		cout << endl;

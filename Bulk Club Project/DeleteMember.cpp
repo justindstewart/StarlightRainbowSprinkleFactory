@@ -10,11 +10,11 @@
 #include "header.h"
 
 /*************************************************************************
- * FUNCTION AddMember
+ * FUNCTION DeleteMember
  * _______________________________________________________________________
  *	This function receives  a basic members vector list and a preferred
  *   members vector list. It then prompts the user for some basic info
- *   and adds a member to the appropriate list.
+ *   and deletes a member from the list.
  * _______________________________________________________________________
  * PRE-CONDITIONS
  * 		basicList	: Basic member vector has to be previously defined
@@ -23,16 +23,17 @@
  * POST-CONDTIONS
  * 		This function returns nothing
  ************************************************************************/
-void DeleteMember(vector<Basic>& basicList,	 // IN - Basic list
-			   vector<Preferred>& prefList)// IN - Preferred list
+void DeleteMember(vector<Basic>& basicList,	 	// IN - Basic list
+			      vector<Preferred>& prefList)  // IN - Preferred list
 {
 	Basic tempBasic;	//IN	- Temporary basic list
 	Preferred tempPref;	//IN	- Temporary preferred list
 	int    tempId;		//IN 	- Temporary id variable
 
+	//ErrorCheckInt - Checks a range of integers and outputs a message
 	tempId = ErrorCheckInt(99999, 10000, "Please enter a 5 digit ID: ");
 
 	tempBasic.findAndDelete(basicList, tempId);
-//	tempPref.findAndDelete(prefList, tempId);
+	tempPref.findAndDelete(prefList, tempId);
 
 }
