@@ -115,7 +115,7 @@ void History::PrintSalesReportByDate (Date searchDateF,
 		                              Basic basicObj,
 		                              Preferred prefObj)
 	{
-	bool found;
+		bool found;
 	found = false;
 
 	int preferredCount;
@@ -128,11 +128,11 @@ void History::PrintSalesReportByDate (Date searchDateF,
 
 	for(index = histVector.begin(); index != histVector.end(); index++)
 	{
-	if (searchDateF == index->buyDate)
-		{
+		if (searchDateF == index->buyDate)
+			{
 
-			found = true;
-		}
+				found = true;
+			}
 	}
 
 	if(found)
@@ -140,17 +140,6 @@ void History::PrintSalesReportByDate (Date searchDateF,
 	cout << "\nPrinting sales report for ";
 	searchDateF.PrintDate();
 	cout << endl;
-
-// SORT VECTOR BY DATE
-//	sort(histVector.begin(), histVector.end());
-
-// OUTPUT THE VECTOR TO SEE IF THE SORT WORKED
-
-// SEARCH THING BY DATE (Binary search? sort first)
-
-//	find(histVector.back(), histVector.end(), searchDateF);
-
-
 
 	// PRINT OUT INFO ON ITEMS BOUGHT ON THIS DATE (output file or console?)
 	cout << "\nItems purchased on ";
@@ -169,11 +158,12 @@ void History::PrintSalesReportByDate (Date searchDateF,
 	if (searchDateF == index->buyDate)
 		{
 
-			cout << left << setw(30) << index->itemName << setw(30)
+			cout << left << setw(30) << index->itemName << setw(15)
 				 << index->quantity << endl;
 		}
 	}
 
+// OUTPUT THE LIST OF SHOPPERS FOR THIS DATE
 	cout << "\nThese people shopped here on ";
 	searchDateF.PrintDate();
 	cout << ": " << endl << endl;
@@ -182,19 +172,75 @@ void History::PrintSalesReportByDate (Date searchDateF,
 	cout << endl;
 	cout << "----------------------------- " << "--------------";
 	cout << endl;
+
+
+	bool temp;
+//	temp = false;
+
+	CustomerNode* head;
+	CustomerNode* tail;
+	CustomerNode* customerPtr;
+	CustomerNode* searchPtr;
+
+	tail = NULL;
+	head = NULL;
+	searchPtr = head;
+
 	for(index = histVector.begin(); index != histVector.end(); index++)
 	{
-	if (searchDateF == index->buyDate)
+		if (searchDateF == index->buyDate)
 		{
 			vector<Basic>::iterator count;
 			for(count = basicVector.begin(); count != basicVector.end(); count++)
 			{
 				if(index->memNumber == count->getNumber())
 				{
-					cout << left << setw(30) << count->getName()<< setw(30)
-								 << index->memNumber;
-					basicCount = basicCount + 1;
-					cout << endl;
+					if(head == NULL)
+					{
+
+						// linked list stuff
+						customerPtr = new CustomerNode;
+						customerPtr->name = count->getName();
+						customerPtr->idNumber = count->getNumber();
+						customerPtr->next = tail;
+						head = customerPtr;
+						tail = head;
+//						customerPtr = new CustomerNode;
+						head->previous = customerPtr;
+
+						basicCount = basicCount + 1;
+					}
+					else
+					{
+						temp = false;
+						searchPtr = head;
+						while(searchPtr != NULL && !temp)
+						{
+							if(searchPtr->name == count->getName())
+							{
+								temp = true;
+							}
+							else
+							{
+								searchPtr = searchPtr->next;
+							}
+						}
+
+						if(!temp)
+						{
+							// linked list stuff
+							customerPtr = new CustomerNode;
+							customerPtr->name = count->getName();
+							customerPtr->idNumber = count->getNumber();
+							customerPtr->next = tail;
+							head = customerPtr;
+							tail = head;
+//							customerPtr = new CustomerNode;
+							head->previous = customerPtr;
+
+							basicCount = basicCount + 1;
+						}
+					}
 				}
 			}
 
@@ -203,19 +249,72 @@ void History::PrintSalesReportByDate (Date searchDateF,
 			{
 				if(index->memNumber == counter->getNumber())
 				{
-					cout << left << setw(30) << counter->getName()<< setw(30)
-								 << index->memNumber;
-					preferredCount = preferredCount + 1;
-					cout << endl;
+					if(head == NULL)
+					{
+						// linked list stuff
+						customerPtr = new CustomerNode;
+						customerPtr->name = counter->getName();
+						customerPtr->idNumber = counter->getNumber();
+						customerPtr->next = tail;
+						head = customerPtr;
+						tail = head;
+//						customerPtr = new CustomerNode;
+						head->previous = customerPtr;
+
+						preferredCount = preferredCount + 1;
+					}
+					else
+					{
+						searchPtr = head;
+						temp = false;
+						while(searchPtr != NULL && !temp)
+						{
+							if(searchPtr->name == counter->getName())
+							{
+								temp = true;
+							}
+							else
+							{
+								searchPtr = searchPtr->next;
+							}
+						}
+
+						if(!temp)
+						{
+							// linked list stuff
+							customerPtr = new CustomerNode;
+							customerPtr->name = counter->getName();
+							customerPtr->idNumber = counter->getNumber();
+							customerPtr->next = tail;
+							head = customerPtr;
+							tail = head;
+//							customerPtr = new CustomerNode;
+							head->previous = customerPtr;
+
+							preferredCount = preferredCount + 1;
+						}
+					}
 				}
 			}
-
-		// I NEED TO FIND A WAY TO LINK THE NAMES WITH THE NUMBERS
-//		cout << left << setw(30) << "Bulk Club Member" << setw(30)
-//			 << index->memNumber << endl;
-
 		}
 	}
+
+	customerPtr = head;
+	while (customerPtr != NULL)
+	{
+		cout << left;
+
+		cout << setw(30) << customerPtr->name;
+		cout << setw(15) << customerPtr->idNumber;
+
+
+		cout << right;
+		cout << endl;
+		customerPtr = customerPtr->next;
+	}
+
+
+// RE- COUNT PREFERRED AND BASIC MEMBERS
 
 	cout << "\nThere were " << preferredCount;
 	// number of preferred members
