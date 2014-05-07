@@ -103,6 +103,14 @@ enum PrintMenu
 	PRINTALL
 };
 
+struct CustomerNode
+{
+	string name;
+	int    idNumber;
+	CustomerNode* next;
+	CustomerNode* previous;
+};
+
 /*************************************************************************
  * ErrorCheckInt
  *	This function Reads in, an upper and lower bound for an integer
