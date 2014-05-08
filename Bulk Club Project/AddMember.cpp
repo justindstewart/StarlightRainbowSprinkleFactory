@@ -32,8 +32,21 @@ void AddMember(vector<Basic>& basicList,	 // IN - Basic list
 	int monthExp;		//CALC	- Month variable post string conversion
 	int dayExp;			//CALC	- Day variable post string conversion
 	int yearExp;		//CALC  - Year variable post string conversion
+	bool invalidId;		//CALC  - Checks for repeating member numbers
 
-	tempId = ErrorCheckInt(99999, 10000, "Please enter a 5 digit ID: ");
+	do
+	{
+		invalidId = false;
+		tempId = ErrorCheckInt(99999, 10000, "Please enter a 5 digit ID: ");
+		invalidId = CheckUniqueInt(basicList, prefList, tempId);
+
+		if(invalidId)
+		{
+			cout << "ID number already in use - please try again." << endl;
+		}
+
+	}while(invalidId);
+
 	tempStatus = ErrorCheckChar('B', 'P', "Basic or Preferred? (B/P): ");
 	cout << "Please enter a name: ";
 	getline(cin, tempName);

@@ -40,7 +40,7 @@ class Basic
 			//Function to get the member number
 		bool getType() const;
 			//Function to get the member type
-		bool checkUpgrade() const;
+		virtual bool checkStatus() const;
 			//Function to check if rebate amount would be more then the
 			//cost of the difference of price of the preferred status
 		float getAmtSpent() const;
@@ -51,6 +51,7 @@ class Basic
 			//Function to overload the == operator
 		bool operator!=(const Basic& obj) const;
 			//Function to overload the != operator
+		bool operator<(const Basic& obj) const;
 		void findAndDelete(vector<Basic>& basicVector, int tempId);
 			//Function to find a delete an instance
 		virtual void print(vector<Basic> myVector);

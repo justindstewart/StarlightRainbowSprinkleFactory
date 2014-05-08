@@ -139,7 +139,8 @@ int main()
 							  break;
 			case BASICTOPREF: cout << "Basic to Preferred?\n";
 							  // call function here
-			basicObj.print(basicList);
+//			StatusCheck(basicList);
+							basicObj.print(basicList);
 							  break;
 			case PREFTOBASIC: cout << "Preferred to Basic?\n";
 			prefObj.print(prefList);
@@ -161,10 +162,6 @@ int main()
 		}
 
 	} while (toupper(yesOrNo) == 'Y');
-
-	basicObj.print(basicList);
-	cout << endl;
-	prefObj.print(prefList);
 
 	return 0;
 }

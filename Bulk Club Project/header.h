@@ -22,8 +22,6 @@
 #include <algorithm>
 #include <vector>
 #include <iterator>
-#include <stdlib.h>
-#include <time.h>
 #include "Date.h"
 #include "Preferred.h"
 #include "Basic.h"
@@ -189,4 +187,24 @@ void DeleteMember(vector<Basic>& basicList,	 	// IN - Basic list
 void FillTotals(vector<Basic>& basicList,	//IN - Basic list
 			   vector<Preferred>& prefList,	//IN - Preferred list
 			   vector<History>& histList);	//IN - History list
+
+/*************************************************************************
+ * CheckUniqueInt
+ *	This function receives  a basic members vector list, a preferred
+ *	 members vector list and a value to search for. It then searches each
+ *	 list for another instance of the value and returns a boolean.
+ ************************************************************************/
+bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
+			   	    vector<Preferred>& prefList,// IN - Preferred list
+			   	    int value);					// IN - Search value
+
+/*************************************************************************
+ * StatusCheck
+ *	This function receives  a basic members vector list and goes through
+ *	the list to find any members that would benefit from upgrading their
+ *	membership to premium. It then outputs that list
+ ************************************************************************/
+template<typename Type>
+void StatusCheck(vector<Type>& list);
+
 #endif /* HEADER_H_ */

@@ -43,7 +43,7 @@ float Preferred::getRebate() const
 	return rebateAmount;
 }//End getRebate
 
-bool Preferred::checkDowngrade() const
+bool Preferred::checkStatus() const
 {
 	bool downgrade;			//CALC - Boolean
 	downgrade = false;

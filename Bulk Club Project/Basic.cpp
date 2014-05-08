@@ -69,14 +69,14 @@ bool Basic::getType() const
 	return memType;
 }//End getType
 
-bool Basic::checkUpgrade() const
+bool Basic::checkStatus() const
 {
 	bool upgrade;			//CALC - Boolean
 	upgrade = false;
 
 	//IF - Checks to see if the rebate amount is more then the cost of the
 	//		upgrade.
-	if((totalSpent * .05) > 10)
+	if((totalSpent * .05) > 15)
 	{
 		upgrade = true;
 	}
@@ -118,6 +118,10 @@ bool Basic::operator!=(const Basic& obj) const
 	return(memNumber!=obj.memNumber);
 }//End overload != operator
 
+bool Basic::operator<(const Basic& obj) const
+{
+	return(memNumber < obj.memNumber);
+}//End overload < operator
 void Basic::findAndDelete(vector<Basic> &basicVector, int tempId)
 {
 	vector<Basic>::iterator index;		//CALC - Iterator

@@ -10,18 +10,19 @@
 #include "header.h"
 
 /*************************************************************************
- * FUNCTION AddMember
+ * FUNCTION CheckUniqueInt
  * _______________________________________________________________________
  *	This function receives  a basic members vector list, a preferred
- *	 members vector list and a value to search for. It then prompts the
- *	 user for some basic info and adds a member to the appropriate list.
+ *	 members vector list and a value to search for. It then searches each
+ *	 list for another instance of the value and returns a boolean.
  * _______________________________________________________________________
  * PRE-CONDITIONS
  * 		basicList	: Basic member vector has to be previously defined
  * 		prefList	: Preferred member vector has to be previously defined
+ * 		value		: Value to search for has to be previously defined
  *
  * POST-CONDTIONS
- * 		This function returns nothing
+ * 		found		: Returns the boolean found
  ************************************************************************/
 bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
 			   	    vector<Preferred>& prefList,// IN - Preferred list
@@ -42,6 +43,7 @@ bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
 		{
 			found = true;
 		}
+		basicIter++;
 	}
 
 	while(!found && prefIter != prefList.end())
@@ -50,6 +52,7 @@ bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
 		{
 			found = true;
 		}
+		prefIter++;
 	}
 
 	return found;
