@@ -137,29 +137,30 @@ int main()
 							  // call function here
 							  DeleteMember(basicList, prefList);
 							  break;
-			case BASICTOPREF: cout << "Basic to Preferred?\n";
-							  // call function here
-//			StatusCheck(basicList);
-							basicObj.print(basicList);
+			case BASICTOPREF: cout << "Recommended Membership Upgrade: " << endl;
+							  StatusCheckBasic(basicList);
+							  basicObj.print(basicList);
 							  break;
-			case PREFTOBASIC: cout << "Preferred to Basic?\n";
-			prefObj.print(prefList);
-						  	  // call function here
+			case PREFTOBASIC: cout << "Recommended Membership Down-grade: " << endl;
+							  StatusCheckPreferred(prefList);
+							  prefObj.print(prefList);
 							  break;
 			}
 		}
 
 		cout << endl;
+		yesOrNo = ErrorCheckChar('Y','N', CONTINUE);
+					cout << endl;
 
-		if (userType == 0 || managerCommand == 0 || generalCommand == 0)
-		{
-			yesOrNo = 'N';
-		}
-		else
-		{
-			yesOrNo = ErrorCheckChar('Y','N', CONTINUE);
-			cout << endl;
-		}
+//		if (userType == 0 || managerCommand == 0 || generalCommand == 0)
+//		{
+//			yesOrNo = 'N';
+//		}
+//		else
+//		{
+//			yesOrNo = ErrorCheckChar('Y','N', CONTINUE);
+//			cout << endl;
+//		}
 
 	} while (toupper(yesOrNo) == 'Y');
 

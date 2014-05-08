@@ -199,12 +199,19 @@ bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
 			   	    int value);					// IN - Search value
 
 /*************************************************************************
- * StatusCheck
+ * StatusCheckBasic
  *	This function receives  a basic members vector list and goes through
  *	the list to find any members that would benefit from upgrading their
  *	membership to premium. It then outputs that list
  ************************************************************************/
-template<typename Type>
-void StatusCheck(vector<Type>& list);
+void StatusCheckBasic(vector<Basic>& list);
+
+/*************************************************************************
+ * StatusCheckPreferred
+ *	This function receives a preferred members vector list and goes through
+ *	the list to find any members that would benefit from down-grading their
+ *	membership to basic. It then outputs that list
+ ************************************************************************/
+void StatusCheckPreferred(vector<Preferred>& list);
 
 #endif /* HEADER_H_ */

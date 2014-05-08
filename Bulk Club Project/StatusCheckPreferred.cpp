@@ -10,11 +10,11 @@
 #include "header.h"
 
 /*************************************************************************
- * FUNCTION StatusCheck
+ * FUNCTION StatusCheckPreferred
  * _______________________________________________________________________
- *	This function receives  a basic members vector list and goes through
- *	the list to find any members that would benefit from upgrading their
- *	membership to premium. It then outputs that list
+ *	This function receives a preferred members vector list and goes through
+ *	the list to find any members that would benefit from down-grading their
+ *	membership to basic. It then outputs that list
  * _______________________________________________________________________
  * PRE-CONDITIONS
  * 		basicList	: Basic member vector has to be previously defined
@@ -22,35 +22,27 @@
  * POST-CONDTIONS
  * 		This function returns nothing
  ************************************************************************/
-template<typename Type>
-void StatusCheck(vector<Type>& list)
+void StatusCheckPreferred(vector<Preferred>& list)
 {
-	typename Type::iterator listIndex;
-	typename Type::iterator outputIndex;
-	vector<Type> outputList;
+	vector<Preferred>::iterator prefIter;
+	vector<Preferred>::iterator outputIter;
+	vector<Preferred> outputList;
+	Preferred obj;
 
-	for(listIndex = list.begin(); listIndex != list.end(); listIndex++)
+	for(prefIter = list.begin(); prefIter != list.end(); prefIter++)
 	{
-		if(listIndex->checkUpgrade())
+		if(prefIter->checkStatus())
 		{
-			outputList.push_back(listIndex);
+			obj.setName(prefIter->getName());
+			outputList.push_back(obj);
 		}
 	}
 
 	if(outputList.size() != 0)
 	{
-		if(outputIndex->getMemType)
+		for(outputIter = outputList.begin(); outputIter != outputList.end(); outputIter++)
 		{
-			cout << "Recommended Membership Down-grade: " << endl;
-		}
-		else
-		{
-			cout << "Recommended Membership Upgrade: " << endl;
-		}
-
-		for(outputIndex = outputList.begin(); outputIndex != outputList; outputIndex++)
-		{
-			cout << outputIndex.getName();
+			cout << outputIter->getName();
 			cout << endl;
 		}
 	}
