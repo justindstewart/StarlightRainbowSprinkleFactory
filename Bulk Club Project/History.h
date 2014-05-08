@@ -48,10 +48,11 @@ class History
 		void print(vector<History> myVector);
 			//Function to print the data
 
-		bool operator==(const History&obj) const;
+		bool operator==(const History& obj) const;
 
-		bool operator!=(const History&obj) const;
+		bool operator!=(const History& obj) const;
 
+		bool operator<(const History& obj) const;
 		// PRINT SALES REPORT BY DATE
 		void PrintSalesReportByDate (Date searchDateF,
 				                     vector<History> histVector,

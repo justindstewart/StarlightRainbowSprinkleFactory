@@ -38,6 +38,7 @@ public:
 		//Function to overload the == operator
 	bool operator!=(const Preferred& obj) const;
 		//Function to overload the != operator
+	bool operator<(const Preferred& obj) const;
 	void findAndDelete(vector<Preferred>& prefVector, int tempId);
 		//Function to find a delete an instance
 	void print(vector<Preferred> prefVector);

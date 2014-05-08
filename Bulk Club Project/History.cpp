@@ -119,17 +119,20 @@ void History::print(vector<History> histVector)
 	}
 }//End print
 
-bool History::operator==(const History&obj) const
+bool History::operator==(const History& obj) const
 {
 	return (buyDate== obj.buyDate);
 }//End overload == operator
 
-bool History::operator!=(const History&obj) const
+bool History::operator!=(const History& obj) const
 {
 	return (buyDate!=obj.buyDate);
 }//End overload != operator
 
-
+bool History::operator<(const History& obj) const
+{
+	return(memNumber < obj.memNumber);
+}
 // PRINT SALES REPORT BY DATE
 void History::PrintSalesReportByDate (Date searchDateF,
 		                              vector<History> histVector,

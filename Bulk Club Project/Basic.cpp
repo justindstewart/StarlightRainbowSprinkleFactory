@@ -122,6 +122,7 @@ bool Basic::operator<(const Basic& obj) const
 {
 	return(memNumber < obj.memNumber);
 }//End overload < operator
+
 void Basic::findAndDelete(vector<Basic> &basicVector, int tempId)
 {
 	vector<Basic>::iterator index;		//CALC - Iterator

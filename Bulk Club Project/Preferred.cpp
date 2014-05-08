@@ -74,6 +74,10 @@ bool Preferred::operator!=(const Preferred& obj) const
 	return(getNumber()!=obj.getNumber());
 }//End overload != operator
 
+bool Preferred::operator<(const Preferred& obj) const
+{
+	return(getNumber() < obj.getNumber());
+}
 
 void Preferred::findAndDelete(vector<Preferred>& prefVector, int tempId)
 {
