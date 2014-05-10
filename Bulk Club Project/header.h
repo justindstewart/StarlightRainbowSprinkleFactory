@@ -56,14 +56,17 @@ const string GENERALMENU = "What would you like to do? (Input 0 to exit)\n"
 						   "3 - Delete member\n"
 						   "4 - Basic to preferred inquiries\n"
 						   "5 - Preferred to basic inquiries\n"
+						   "6 - Print Preferred List\n"
+						   "7 - Print Basic List\n"
+						   "8 - Print Member List\n"
 						   "Enter an option: ";
 const string CONTINUE    = "Would you like to do something else? ";
-const string PRINTOPTION = "Would you like to print report for preferred, "
-						   "basic, or all members?\n"
-						   "1 - Preferred\n"
-						   "2 - Basic\n"
-						   "3 - All\n"
-		                   "Enter an option: ";
+//const string PRINTOPTION = "Would you like to print report for preferred, "
+//						   "basic, or all members?\n"
+//						   "1 - Preferred\n"
+//						   "2 - Basic\n"
+//						   "3 - All\n"
+//		                   "Enter an option: ";
 
 enum UserOption
 {
@@ -91,11 +94,7 @@ enum GeneralMenu
 	ADDMEMBER,
 	DELETEMEMBER,
 	BASICTOPREF,
-	PREFTOBASIC
-};
-
-enum PrintMenu
-{
+	PREFTOBASIC,
 	PRINTPREFERRED,
 	PRINTBASIC,
 	PRINTALL
@@ -148,8 +147,7 @@ void PrintHeader(ostream &oFile,	// IN - Output type
  *	 preferred members vector list. It then uses the file name to populate
  *	 these lists. -returns nothing
  ************************************************************************/
-void FillMemberList(string fileName,			  // IN - File name
-					vector<Basic>& basicList,	  // IN - Basic list
+void FillMemberList(vector<Basic>& basicList,	  // IN - Basic list
 					vector<Preferred> & prefList);// IN - Preferred list
 
 /*************************************************************************
@@ -157,8 +155,7 @@ void FillMemberList(string fileName,			  // IN - File name
  *	This function receives a file name and a history vector. It then fills
  *	 the vector using the file specified by the program. -returns nothing.
  ************************************************************************/
-void FillHistoryList(string fileName,			 // IN - File name
-					vector<History>& histList);   // IN - History list
+void FillHistoryList(vector<History>& histList);   // IN - History list
 
 /*************************************************************************
  * AddMember
@@ -213,5 +210,21 @@ void StatusCheckBasic(vector<Basic>& list);
  *	membership to basic. It then outputs that list
  ************************************************************************/
 void StatusCheckPreferred(vector<Preferred>& list);
+
+/*************************************************************************
+ * FillMemberFile
+ *	This function receives a basic members vector list and a preferred
+ *	members vector list. At the end of the program it then populates the
+ *	file for future use. - returns nothing
+ ************************************************************************/
+void FillMemberFile(vector<Basic>& basicList,	 // IN - Basic list
+					vector<Preferred>& prefList);// IN - Preferred list
+
+/*************************************************************************
+ * FillHistoryFile
+ *	This function receives a file name and a history vector. It then fills
+ *	 the file using the file specified by the program. -returns nothing.
+ ************************************************************************/
+void FillHistoryFile(vector<History>& histList);   // IN - History list
 
 #endif /* HEADER_H_ */

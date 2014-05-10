@@ -29,29 +29,41 @@ int ErrorCheckInt(const int upperLim,	//IN - Upper bound for input
 				  string prompt)		//IN - String containing prompt
 										//     for user input
 {
-	bool invalid;		//CALC - Holds boolean value for check
 	int  input;			//IN   - User input
 	int  setWAdj;		//CALC - Sets the setw according to string size
+	bool done;
 
-	invalid = true;
+	done = false;
 
-	//DO - Runs until user input is validated.
 	do
 	{
 		cout << prompt;
-
-		//IF - Checks for char input and range of input
-		if(!(cin >> input))
+		try
 		{
+			if(!(cin >> input))
+			{
+				throw string("The input stream is in the fail state.");
+			}
+			else if(input < lowerLim || input > upperLim)
+			{
+				throw input;
+			}
+			else
+			{
+				done = true;
+			}
+		}
+		catch(string& s)
+		{
+			cout << endl << s << endl;
 			cout << "\n**** ";
-			cout << "Please input a number between " << lowerLim << " to ";
+			cout << "Please input a number between " << lowerLim << " and ";
 			cout << upperLim << " ****\n\n";
 
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			invalid = true;
 		}
-		else if(input < lowerLim || input > upperLim)
+		catch(int& i)
 		{
 			cout << "\n**** The number " << input;
 			cout << left;
@@ -75,11 +87,8 @@ int ErrorCheckInt(const int upperLim,	//IN - Upper bound for input
 			cout << " and " << setw((log10(upperLim) + 1) + 1);
 			cout << left << upperLim << " ****\n\n";
 		}
-		else
-		{
-			invalid = false;
-		}//END IF - Input Check
-	}while(invalid);//END WHILE - Loop until valid info
+	}while(!done);
+
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	return input;

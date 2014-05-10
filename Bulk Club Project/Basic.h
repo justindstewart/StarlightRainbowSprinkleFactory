@@ -47,6 +47,10 @@ class Basic
 			//Function to get the amount spent
 		void display(void) const;
 			//Function to display the details of the object
+		int getMonth() const;
+		int getDay() const;
+		int getYear() const;
+
 		bool operator==(const Basic& obj) const;
 			//Function to overload the == operator
 		bool operator!=(const Basic& obj) const;

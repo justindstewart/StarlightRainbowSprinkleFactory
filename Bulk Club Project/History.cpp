@@ -56,6 +56,21 @@ void History::setBuyDate(int newMonth, int newDay, int newYear)
 	buyDate.SetDate(newMonth, newDay, newYear);
 }//End setBuyDate
 
+int History::getDay() const
+{
+	return buyDate.GetDay();
+}
+
+int History::getMonth() const
+{
+	return buyDate.GetMonth();
+}
+
+int History::getYear() const
+{
+	return buyDate.GetYear();
+}
+
 float History::calculateTotal(vector<History> histVector, int memberId) const
 {
 	float totalSpent;	//CALC & OUT - Calculates and outputs total spent

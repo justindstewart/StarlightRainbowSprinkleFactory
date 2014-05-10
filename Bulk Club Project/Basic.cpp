@@ -89,6 +89,21 @@ float Basic::getAmtSpent() const
 	return totalSpent;
 }//End getAmtSpent
 
+int Basic::getDay() const
+{
+	return expDate.GetDay();
+}
+
+int Basic::getMonth() const
+{
+	return expDate.GetMonth();
+}
+
+int Basic::getYear() const
+{
+	return expDate.GetYear();
+}
+
 void Basic::display(void) const
 {
 	cout << setw(30) << name;
@@ -166,4 +181,5 @@ void Basic::print(vector<Basic> basicVector)
 		cout << endl;
 		index->display();
 	}
+	cout << endl;
 }

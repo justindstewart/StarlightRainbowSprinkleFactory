@@ -22,8 +22,7 @@
  * POST-CONDTIONS
  * 		This function will output the class heading.
  ************************************************************************/
-void FillHistoryList(string fileName,			 // IN - File name
-					vector<History>& histList)   // IN - History list
+void FillHistoryList(vector<History>& histList)   // IN - History list
 {
 	ifstream inFile;	//IN	- Input file variable
 	History tempHist;	//IN	- Temporary history vector
@@ -38,7 +37,7 @@ void FillHistoryList(string fileName,			 // IN - File name
 	float tempCost;		//IN	- Temporary cost variable
 	int	tempQuantity;	//IN	- Temporary quantity variable
 
-	inFile.open(fileName.c_str());
+	inFile.open("purchase history.txt");
 
 	//WHILE - Loops through file and fills vector list until end of file.
 	while(getline(inFile, tempMo, '/'))

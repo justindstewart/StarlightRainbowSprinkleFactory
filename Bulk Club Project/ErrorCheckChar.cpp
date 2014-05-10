@@ -30,30 +30,38 @@ char ErrorCheckChar(const char CHAR1,	 //IN -First Char for input
 										 //     for user input
 {
 	char input;		//IN   - User input
-	bool invalid;	//CALC - Holds boolean value for valid check
+	bool done;	//CALC - Holds boolean value for valid check
 
-	invalid = true;
+	done = false;
 
 	//DO - Loops until user input is validated
 	do
 	{
 		cout << prompt;
-		cin.get(input);
-		input = toupper(input);
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		try
+		{
+			cin.get(input);
+			input = toupper(input);
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-		//IF - Checks user input against set character choice.
-		if (input != CHAR1 && input != CHAR2)
+			//IF - Checks user input against set character choice.
+			if (input != CHAR1 && input != CHAR2)
+			{
+				throw input;
+			}
+			else
+			{
+				done = true;
+			}//END IF - User input check
+		}
+		catch(char& c)
 		{
 			cout << "****  " << input << " is an invalid Entry ****\n";
 			cout << "****   Please input " << CHAR1 << " or " << CHAR2;
 			cout << "  ****" << endl;
 		}
-		else
-		{
-			invalid = false;
-		}//END IF - User input check
-	}while(invalid); //WHILE - Loop until valid info input
+
+	}while(!done); //WHILE - Loop until valid info input
 
 	return input;
 }

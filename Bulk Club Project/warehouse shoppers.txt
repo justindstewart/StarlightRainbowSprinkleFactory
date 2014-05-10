@@ -1,44 +1,52 @@
-Sally Shopper
-12345
-Basic
-11/01/2014
-Fred Frugal
-67899
-Preferred
-12/15/2014
-Betty Buysalot
-12899
-Preferred
-01/25/2015
-Larry Largefamily
-88888
-Basic
-02/01/2015
-Linda Livesalone
-35647
-Basic
-12/15/2014
-Sam Single
-31311
-Preferred
-12/05/2014
 Kathy Havealotsofkids
 12121
 Basic
 12/30/2014
-Vern Video 
-77777
-Preferred
-11/15/2014
+Sally Shopper
+12345
+Basic
+11/1/2014
+Justin Stewart
+12789
+Basic
+3/14/2016
 Benjamin Business
 16161
 Basic
 11/20/2014
+Linda Livesalone
+35647
+Basic
+12/15/2014
+Justin Stewart
+55555
+Basic
+3/14/2016
 Sam Saddleback
 61616
 Basic
-03/20/2015
+3/20/2015
+Larry Largefamily
+88888
+Basic
+2/1/2015
+Betty Buysalot
+12899
+Preferred
+1/25/2015
+Sam Single
+31311
+Preferred
+12/5/2014
 Sue Shoparound
 56723
 Preferred
-03/21/2015
+3/21/2015
+Fred Frugal
+67899
+Preferred
+12/15/2014
+Vern Video 
+77777
+Preferred
+11/15/2014

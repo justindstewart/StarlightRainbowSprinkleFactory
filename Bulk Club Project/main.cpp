@@ -42,12 +42,8 @@ int main()
 	Date searchDate;			//IN - Variable to hold entire date
 	int searchID;				//IN - Variable to hold the ID to search
 
-	FillMemberList("warehouse shoppers.txt", basicList, prefList);
-	FillHistoryList("day1.txt", histList);
-	FillHistoryList("day2.txt", histList);
-	FillHistoryList("day3.txt", histList);
-	FillHistoryList("day4.txt", histList);
-	FillHistoryList("day5.txt", histList);
+	FillMemberList(basicList, prefList);
+	FillHistoryList(histList);
 
 	FillTotals(basicList, prefList, histList);
 
@@ -64,7 +60,7 @@ int main()
 		case MANAGER: managerCommand = ErrorCheckInt(7, 0, MANAGERMENU);
 					  cout << endl;
 					  break;
-		case GENERAL: generalCommand = ErrorCheckInt(5, 0, GENERALMENU);
+		case GENERAL: generalCommand = ErrorCheckInt(8, 0, GENERALMENU);
 					  cout << endl;
 					  break;
 		}
@@ -134,35 +130,47 @@ int main()
 							  AddMember(basicList, prefList);
 							  break;
 			case DELETEMEMBER:cout << "Deleting member:\n";
-							  // call function here
 							  DeleteMember(basicList, prefList);
 							  break;
 			case BASICTOPREF: cout << "Recommended Membership Upgrade: " << endl;
 							  StatusCheckBasic(basicList);
-							  basicObj.print(basicList);
 							  break;
 			case PREFTOBASIC: cout << "Recommended Membership Down-grade: " << endl;
 							  StatusCheckPreferred(prefList);
-							  prefObj.print(prefList);
 							  break;
+			case PRINTPREFERRED: cout << "Preferred Members: " << endl;
+								 prefObj.print(prefList);
+								 break;
+			case PRINTBASIC: cout << "Basic Members: " << endl;
+							 basicObj.print(basicList);
+							 break;
+			case PRINTALL: cout << "All Members: " << endl;
+						   basicObj.print(basicList);
+						   prefObj.print(prefList);
+						   break;
 			}
 		}
 
 		cout << endl;
-		yesOrNo = ErrorCheckChar('Y','N', CONTINUE);
-					cout << endl;
 
-//		if (userType == 0 || managerCommand == 0 || generalCommand == 0)
-//		{
-//			yesOrNo = 'N';
-//		}
-//		else
-//		{
-//			yesOrNo = ErrorCheckChar('Y','N', CONTINUE);
-//			cout << endl;
-//		}
+		if (userType == 0 || managerCommand == 0 || generalCommand == 0)
+		{
+			yesOrNo = 'N';
+		}
+		else
+		{
+			yesOrNo = ErrorCheckChar('Y','N', CONTINUE);
+			cout << endl;
+		}
 
 	} while (toupper(yesOrNo) == 'Y');
+
+	//FillMemberFile - Fills the external member file for reuse
+	FillMemberFile(basicList, prefList);
+	//FillHistoryFile - Fills the external history file for reuse
+	FillHistoryFile(histList);
+
+	cout << "Lists Saved. See you next time!";
 
 	return 0;
 }

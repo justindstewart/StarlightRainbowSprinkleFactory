@@ -125,4 +125,5 @@ void Preferred::print(vector<Preferred> prefVector)
 		cout << endl;
 		index->display();
 	}
+	cout << endl;
 }

@@ -12,7 +12,7 @@
 /*************************************************************************
  * FUNCTION FillMemberList
  * _______________________________________________________________________
- *	This function receives a file name, a basic members vector list and a
+ *	This function receives a basic members vector list and a
  *	 preferred members vector list. It then uses the file name to populate
  *	 these lists. -returns nothing
  * _______________________________________________________________________
@@ -24,8 +24,7 @@
  * POST-CONDTIONS
  * 		This function returns nothing
  ************************************************************************/
-void FillMemberList(string fileName,			 // IN - File name
-					vector<Basic>& basicList,	 // IN - Basic list
+void FillMemberList(vector<Basic>& basicList,	 // IN - Basic list
 					vector<Preferred> & prefList)// IN - Preferred list
 {
 	ifstream inFile;	//IN	- Input file variable
@@ -41,7 +40,7 @@ void FillMemberList(string fileName,			 // IN - File name
 	int dayExp;			//CALC	- Day variable post string conversion
 	int yearExp;		//CALC  - Year variable post string conversion
 
-	inFile.open(fileName.c_str());
+	inFile.open("warehouse shoppers.txt");
 	//WHILE - Loops through file until no longer in file boundary
 	while(getline(inFile, tempName))
 	{
