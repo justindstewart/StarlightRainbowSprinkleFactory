@@ -30,9 +30,13 @@ Generate the following reports/request at any time:
 6.	A report that prints out the rebate of all the preferred members sorted by membership number.
 7.	A report showing the amount per year paid by each member for the membership dues sorted by member type (basic/preferred and then by member name.)
 8.	A user should be able to enter a month and get a list of all members whose memberships expire that month as well as their dues amount.
+
 -9.	A user should be able to add/delete members.   Create purchases for the new members to validate your code.  Updates should be saved between executions.
+
 -10.	Determine if any basic customer should convert their membership to preferred status.
+
 -11.	Determine if any preferred customer should convert their membership to basic status.
+
 -12.	Save all changes between executions.
 
 A user should also be able to specify the above reports for basic members only, preferred members only, or all members.
