@@ -59,17 +59,17 @@ void History::setBuyDate(int newMonth, int newDay, int newYear)
 int History::getDay() const
 {
 	return buyDate.GetDay();
-}
+}//End getDay
 
 int History::getMonth() const
 {
 	return buyDate.GetMonth();
-}
+}//End getMonth
 
 int History::getYear() const
 {
 	return buyDate.GetYear();
-}
+}//End getYear
 
 float History::calculateTotal(vector<History> histVector, int memberId) const
 {
@@ -147,7 +147,8 @@ bool History::operator!=(const History& obj) const
 bool History::operator<(const History& obj) const
 {
 	return(memNumber < obj.memNumber);
-}
+}//End overload < operator
+
 // PRINT SALES REPORT BY DATE
 void History::PrintSalesReportByDate (Date searchDateF,
 		                              vector<History> histVector,

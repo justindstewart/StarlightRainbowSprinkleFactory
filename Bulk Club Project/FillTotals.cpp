@@ -28,8 +28,8 @@ void FillTotals(vector<Basic>& basicList,	//IN - Basic list
 			   vector<Preferred>& prefList,	//IN - Preferred list
 			   vector<History>& histList)	//IN - History list
 {
-	History histObj;					//CALC - Object to access
-	vector<Basic>::iterator basicIter;	//CALC - Basic Iterator
+	History histObj;					 //CALC - Object to access
+	vector<Basic>::iterator basicIter;	 //CALC - Basic Iterator
 	vector<Preferred>::iterator prefIter;//CALC - Preferred Iterator
 
 	//FOR - Loops through basic list and fills each instance with total

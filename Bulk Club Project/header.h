@@ -132,19 +132,10 @@ char ErrorCheckChar(const char CHAR1,	 //IN -First Char for input
 					string prompt);		 //IN - String containing prompt
 
 /*************************************************************************
- * FUNCTION  ErrorCheckFloat
- * _______________________________________________________________________
+ * ErrorCheckFloat
  *	This function Reads in, an upper and lower bound for a float
  *	 input, as well as a string to prompt the user for that float input,
  *	 it error checks and then returns that input
- * _______________________________________________________________________
- * PRE-CONDITIONS
- *			upperLim:	Upper bound for input
- *			lowerLim:	Lower bound for input
- *			prompt:		String containing prompt for user input
- *
- * POST-CONDTIONS
- *	This function returns the input
  ************************************************************************/
 float ErrorCheckFloat(const float upperLim,	//IN - Upper bound for input
 					  const float lowerLim, //IN - Lower bound for input
@@ -223,7 +214,7 @@ bool CheckUniqueInt(vector<Basic>& basicList,	// IN - Basic list
  *	the list to find any members that would benefit from upgrading their
  *	membership to premium. It then outputs that list
  ************************************************************************/
-void StatusCheckBasic(vector<Basic>& list);
+void StatusCheckBasic(vector<Basic>& list);	//IN - Basic List
 
 /*************************************************************************
  * StatusCheckPreferred
@@ -231,7 +222,7 @@ void StatusCheckBasic(vector<Basic>& list);
  *	the list to find any members that would benefit from down-grading their
  *	membership to basic. It then outputs that list
  ************************************************************************/
-void StatusCheckPreferred(vector<Preferred>& list);
+void StatusCheckPreferred(vector<Preferred>& list); //IN - Preferred list
 
 /*************************************************************************
  * FillMemberFile
@@ -265,5 +256,30 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
  *	amounts of each member sorted by membership number.
  ************************************************************************/
 void PrintRebates(vector<Preferred> prefList);// IN - Preferred List
+
+/*************************************************************************
+ * MembershipDues
+ *	This function receives a basic vector list and a preferred vector list
+ *	and outputs the membership dues of each member sorted by membership
+ *	name.
+ ************************************************************************/
+void MembershipDues(vector<Basic> basicList,	// IN - Basic List
+				    vector<Preferred> prefList);// IN - Preferred List
+
+/*************************************************************************
+ * CompareNamesPreferred
+ *	This function receives two preferred member names and compares them
+ *	alphabetically.
+ ************************************************************************/
+bool CompareNamesPref(const Preferred& first, 	// IN - First name to compare
+					  const Preferred& second);	// IN - Second name to compare
+
+/*************************************************************************
+ * CompareNamesBasic
+ *	This function receives two basic member names and compares them
+ *	alphabetically.
+ ************************************************************************/
+bool CompareNamesBasic(const Basic& first,	// IN - First name to compare
+					   const Basic& second);// IN - Second name to compare
 
 #endif /* HEADER_H_ */

@@ -60,7 +60,7 @@ void FillHistoryList(vector<History>& histList)   // IN - History list
 		tempHist.setQuantity(tempQuantity);
 		tempHist.setBuyDate(monthExp, dayExp, yearExp);
 		histList.push_back(tempHist);
-	}
+	}//END While
 
 	inFile.close();
 }

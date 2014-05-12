@@ -71,8 +71,8 @@ void FillMemberList(vector<Basic>& basicList,	 // IN - Basic list
 			tempBasic.setMemType(0);
 			tempBasic.setExp(monthExp, dayExp, yearExp);
 			basicList.push_back(tempBasic);
-		}
+		}//END IF
+	}//END WHILE
 
-	}
 	inFile.close();
 }

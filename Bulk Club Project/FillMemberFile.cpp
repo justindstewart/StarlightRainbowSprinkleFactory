@@ -10,7 +10,7 @@
 #include "header.h"
 
 /*************************************************************************
- * FUNCTION FillMemberList
+ * FUNCTION FillMemberFile
  * _______________________________________________________________________
  *	This function receives a basic members vector list and a preferred
  *	members vector list. At the end of the program it then populates the
@@ -26,30 +26,32 @@
 void FillMemberFile(vector<Basic>& basicList,	// IN - Basic list
 					vector<Preferred>& prefList)// IN - Preferred list
 {
-	ofstream oFile;		//IN	- Input file variable
-	vector<Basic>::iterator basicIter;
-	vector<Preferred>::iterator prefIter;
+	ofstream oFile;							//IN - Input file variable
+	vector<Basic>::iterator basicIter;		//CALC - Basic iterator
+	vector<Preferred>::iterator prefIter;	//CALC - Preferred iterator
 
 	sort(basicList.begin(), basicList.end());
 	sort(prefList.begin(), prefList.end());
 
 	oFile.open("warehouse shoppers.txt");
 
+	//FOR - Loops through basic list and outputs data members to a file
 	for(basicIter = basicList.begin(); basicIter != basicList.end(); basicIter++)
 	{
 		oFile << basicIter->getName() << endl;
 		oFile << basicIter->getNumber() << endl;
 		oFile << "Basic" << endl;
 		oFile << basicIter->getMonth() << "/" << basicIter->getDay() << "/" << basicIter->getYear() << endl;
-	}
+	}//END FOR
 
+	//FOR - Loops through preferred list and outputs data members to a file
 	for(prefIter = prefList.begin(); prefIter != prefList.end(); prefIter++)
 	{
 		oFile << prefIter->getName() << endl;
 		oFile << prefIter->getNumber() << endl;
 		oFile << "Preferred" << endl;
 		oFile << prefIter->getMonth() << "/" << prefIter->getDay() << "/" << prefIter->getYear() << endl;
-	}
+	}//END FOR
 
 	oFile.close();
 }

@@ -123,8 +123,8 @@ int main()
 			case PRINTREBATE: cout << "Printing rebate report: \n";
 							  PrintRebates(prefList);
 							  break;
-			case PRINTDUESREPORT: cout << "Printing dues report\n";
-								// call function here
+			case PRINTDUESREPORT: cout << "Printing dues report: \n";
+								  MembershipDues(basicList, prefList);
 								   break;
 			}
 		}

@@ -30,7 +30,7 @@ char ErrorCheckChar(const char CHAR1,	 //IN -First Char for input
 										 //     for user input
 {
 	char input;		//IN   - User input
-	bool done;	//CALC - Holds boolean value for valid check
+	bool done;		//CALC - Holds boolean value for valid check
 
 	done = false;
 

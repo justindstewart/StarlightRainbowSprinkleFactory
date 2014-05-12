@@ -36,4 +36,6 @@ void DeleteMember(vector<Basic>& basicList,	 	// IN - Basic list
 	tempBasic.findAndDelete(basicList, tempId);
 	tempPref.findAndDelete(prefList, tempId);
 
+	cout << endl;
+
 }

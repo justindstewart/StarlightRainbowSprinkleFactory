@@ -24,11 +24,12 @@
  ************************************************************************/
 void FillHistoryFile(vector<History>& histList)   // IN - History list
 {
-	ofstream oFile;		//IN	- Input file variable
-	vector<History>::iterator histIter;
+	ofstream oFile;						//IN - Input file variable
+	vector<History>::iterator histIter;	//IN - History iterator
 
 	oFile.open("purchase history.txt");
 
+	//FOR - Loops through history list and outputs the data to a file
 	for(histIter = histList.begin(); histIter != histList.end(); histIter++)
 	{
 		oFile << histIter->getMonth() << "/" << histIter->getDay() << "/" << histIter->getYear() << endl;
@@ -36,7 +37,6 @@ void FillHistoryFile(vector<History>& histList)   // IN - History list
 		oFile << histIter->getName() << endl;
 		oFile << histIter->getCost() << " " << histIter->getQuantity() << endl;
 	}
-
 
 	oFile.close();
 }
