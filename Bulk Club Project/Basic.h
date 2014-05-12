@@ -34,6 +34,7 @@ class Basic
 		void setAmtSpent(float newAmtSpent);
 			//Function to manually set amount spent
 		void increaseAmtSpent(float newAmt);
+			//Function to manually increase the amount spent
 		void setExp(int newMonth, int newDay, int newYear);
 			//Function to manually set the expiration date
 		string getName() const;
@@ -49,15 +50,20 @@ class Basic
 			//Function to get the amount spent
 		void display(void) const;
 			//Function to display the details of the object
+		void displayDate() const;
+			//Function to display the date
 		int getMonth() const;
+			//Function to return the month
 		int getDay() const;
+			//Function to return the day
 		int getYear() const;
-
+			//Function to return the year
 		friend bool operator==(const Basic& obj1, const Basic& obj2);
 			//Function to overload the == operator
 		bool operator!=(const Basic& obj) const;
 			//Function to overload the != operator
 		bool operator<(const Basic& obj) const;
+		 	//Function to overload the < operator
 		void findAndDelete(vector<Basic>& basicVector, int tempId);
 			//Function to find a delete an instance
 		virtual void print(vector<Basic> myVector);

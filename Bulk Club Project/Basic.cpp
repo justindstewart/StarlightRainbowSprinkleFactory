@@ -132,6 +132,11 @@ void Basic::display(void) const
 	expDate.PrintDate();
 }//End display
 
+void Basic::displayDate() const
+{
+	expDate.PrintDate();
+}//End displayDate
+
 bool operator==(const Basic& obj1, const Basic& obj2)
 {
 	return(obj1.memNumber==obj2.memNumber);
@@ -191,4 +196,4 @@ void Basic::print(vector<Basic> basicVector)
 		index->display();
 	}
 	cout << endl;
-}
+}//End print

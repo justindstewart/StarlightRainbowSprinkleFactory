@@ -48,6 +48,7 @@ const string MANAGERMENU = "What would you like to do? (Input 0 to exit)\n"
 						   "5 - Print quantity of EACH item sold\n"
 						   "6 - Print preferred member rebate report\n"
 						   "7 - Print membership dues report\n"
+						   "8 - Search for membership expiration\n"
 						   "Enter an option: ";
 const string GENERALMENU = "What would you like to do? (Input 0 to exit)\n"
 						   "1 - Find out whose membership expires this "
@@ -85,7 +86,8 @@ enum ManagerMenu
 	PRINTQUANTITYOFITEM,
 	PRINTQUANTITYOFALLITEMS,
 	PRINTREBATE,
-	PRINTDUESREPORT
+	PRINTDUESREPORT,
+	MEMBEREXP
 };
 
 enum GeneralMenu
@@ -282,4 +284,13 @@ bool CompareNamesPref(const Preferred& first, 	// IN - First name to compare
 bool CompareNamesBasic(const Basic& first,	// IN - First name to compare
 					   const Basic& second);// IN - Second name to compare
 
+/*************************************************************************
+ * MembershipExp
+ *	This function receives a basic vector list and a preferred vector list
+ *	and prompts the user for a month to search membership expirations for.
+ *	Outputs a list of members whose expiration expires.
+ ************************************************************************/
+void MembershipExp(vector<Basic>& basicList,	// IN - Basic List
+				   vector<Preferred>& prefList);// IN - Preferred List
+void SortVectorByItemName(vector <History> &histVector);
 #endif /* HEADER_H_ */

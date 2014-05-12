@@ -9,10 +9,9 @@
 
 #include "header.h"
 
-History temp;
-
 void SortVectorByItemName(vector <History> &histVector)
 {
+	History temp;
 	unsigned vectorSize = histVector.size();
 
 	for(unsigned iterator = 1; iterator< vectorSize; iterator++)
