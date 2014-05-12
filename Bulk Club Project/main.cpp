@@ -99,15 +99,27 @@ int main()
 									 break;
 			case PRINTTOTALPURCHASES: cout << "Printing purchases\n";
 									 // call function here
-									   break;
-			case PRINTQUANTITYOFITEM: cout << "Printing quantities of an "
-					                  "item\n";
+			histObj.PrintTotalPurchases(histList,
+						basicList,
+						prefList,
+						basicObj,
+						prefObj);
+
+						   break;
+			case PRINTQUANTITYOFITEM: cout << "Print quantity of what "
+					                  "item? ";
+			// read in item
+			getline(cin, searchItem);
 										// call function here
-									   break;
-			case PRINTQUANTITYOFALLITEMS: cout << "Printing quantities of "
+			histObj.PrintQuantityOfItem(searchItem,
+						histList,
+						histObj);
+					   break;
+			case PRINTQUANTITYOFALLITEMS:  cout << "Printing quantities of "
 					                      "all items\n";
 										// call function here
-										  break;
+			histObj.PrintQuantityOfAllItems(histList);
+							  break;
 			case PRINTREBATE: cout << "Printing rebate\n";
 								// call function here
 								break;
