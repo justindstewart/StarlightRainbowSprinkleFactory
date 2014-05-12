@@ -120,9 +120,9 @@ int main()
 										// call function here
 			histObj.PrintQuantityOfAllItems(histList);
 							  break;
-			case PRINTREBATE: cout << "Printing rebate\n";
-								// call function here
-								break;
+			case PRINTREBATE: cout << "Printing rebate report: \n";
+							  PrintRebates(prefList);
+							  break;
 			case PRINTDUESREPORT: cout << "Printing dues report\n";
 								// call function here
 								   break;

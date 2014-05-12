@@ -259,4 +259,11 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
 			     vector<Preferred>& prefList,// IN - Preferred list
 			     vector<History>& histList); // IN - History list
 
+/*************************************************************************
+ * PrintRebates
+ *	This function receives a preferred vector list and outputs the rebate
+ *	amounts of each member sorted by membership number.
+ ************************************************************************/
+void PrintRebates(vector<Preferred> prefList);// IN - Preferred List
+
 #endif /* HEADER_H_ */

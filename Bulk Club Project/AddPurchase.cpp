@@ -32,9 +32,9 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
 	int    tempId;		//IN 	- Temporary id variable
 	float  tempCost;	//IN 	- Temporary cost variable
 	int    tempQuantity;//IN	- Temporary quantity variable
-	int monthExp;		//CALC	- Month variable post string conversion
-	int dayExp;			//CALC	- Day variable post string conversion
-	int yearExp;		//CALC  - Year variable post string conversion
+	int buyMonth;		//CALC	- Month variable post string conversion
+	int buyDay;			//CALC	- Day variable post string conversion
+	int buyYear;		//CALC  - Year variable post string conversion
 	bool validId;		//CALC  - Checks for repeating member numbers
 	History obj;		//IN 	- History object for adding purchase
 
@@ -45,20 +45,21 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
 		tempId = ErrorCheckInt(99999, 10000, "Please enter a 5 digit member ID: ");
 		validId = CheckUniqueInt(basicList, prefList, tempId);
 
+		//IF - Outputs error message if member ID is not found
 		if(!validId)
 		{
 			cout << "ID number does not exist - please try again." << endl;
-		}
+		}//END IF
 
-	}while(!validId);
+	}while(!validId);//END DO WHILE
 
 	cout << "Please enter an item name: ";
 	getline(cin, tempName);
 
-	cout << "Please enter an expiration date: " << endl;
-	monthExp = ErrorCheckInt(12, 1, "Month: ");
-	dayExp = ErrorCheckInt(31, 1, "Day: ");
-	yearExp = ErrorCheckInt(2031, 2014, "Year: ");
+	cout << "Please enter a sale date: " << endl;
+	buyMonth = ErrorCheckInt(12, 1, "Month: ");
+	buyDay = ErrorCheckInt(31, 1, "Day: ");
+	buyYear = ErrorCheckInt(2014, 2013, "Year: ");
 
 	tempCost = ErrorCheckFloat(10000, .01, "Please enter a cost: ");
 
@@ -68,7 +69,7 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
 	obj.setNumber(tempId);
 	obj.setCost(tempCost);
 	obj.setQuantity(tempQuantity);
-	obj.setBuyDate(monthExp, dayExp, yearExp);
+	obj.setBuyDate(buyMonth, buyDay, buyYear);
 	histList.push_back(obj);
 
 	//IF - Searches member lists to find member ID and updates total spent
