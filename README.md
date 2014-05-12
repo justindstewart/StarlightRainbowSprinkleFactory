@@ -26,9 +26,9 @@ Generate the following reports/request at any time:
 
 2.	A user should be able to enter a membership number or name and get a list of the total purchases per that member.
 
-3.	A report that prints the total purchases by all the members sorted by membership number.  It should also include a grand total of the purchases.
+-3.	A report that prints the total purchases by all the members sorted by membership number.  It should also include a grand total of the purchases.
 
-4.	A user should be able to enter an item name and get the quantity of that item sold as well as the total sales price.
+-4.	A user should be able to enter an item name and get the quantity of that item sold as well as the total sales price.
 
 5.	A report that prints out the quantity of each item sold sorted by item name.
 
