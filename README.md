@@ -30,7 +30,7 @@ Generate the following reports/request at any time:
 
 -4.	A user should be able to enter an item name and get the quantity of that item sold as well as the total sales price.
 
-5.	A report that prints out the quantity of each item sold sorted by item name.
+-5.	A report that prints out the quantity of each item sold sorted by item name.
 
 6.	A report that prints out the rebate of all the preferred members sorted by membership number.
 
