@@ -64,12 +64,23 @@ class History
 				                     vector<Preferred> preferredVector,
 				                     Basic basicObj,
 				                     Preferred prefObj);
+				                     
+             	void PrintTotalPurchases (vector<History> histVector,
+				          vector<Basic> basicVector,
+					  vector<Preferred> preferredVector,
+					  Basic basicObj,
+					  Preferred prefObj);
 
 		void PrintPurchasesByMember(int searchIdF,
-									vector<History> histVector,
-									vector<Basic> basicVector,
-									vector<Preferred> preferredVector);
+					vector<History> histVector,
+					vector<Basic> basicVector,
+					vector<Preferred> preferredVector);
 
+		void PrintQuantityOfItem (string searchItem,
+					  vector <History> histVector,
+					  History histObj);
+
+		void PrintQuantityOfAllItems (vector <History> histVector);
 
 	private:
 		string  itemName;	//Variable to hold the item name
