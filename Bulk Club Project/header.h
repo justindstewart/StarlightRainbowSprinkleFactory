@@ -54,11 +54,12 @@ const string GENERALMENU = "What would you like to do? (Input 0 to exit)\n"
 						   "month\n"
 						   "2 - Add member\n"
 						   "3 - Delete member\n"
-						   "4 - Basic to preferred inquiries\n"
-						   "5 - Preferred to basic inquiries\n"
-						   "6 - Print Preferred List\n"
-						   "7 - Print Basic List\n"
-						   "8 - Print Member List\n"
+						   "4 - Add purchase\n"
+						   "5 - Basic to preferred inquiries\n"
+						   "6 - Preferred to basic inquiries\n"
+						   "7 - Print Preferred List\n"
+						   "8 - Print Basic List\n"
+						   "9 - Print Member List\n"
 						   "Enter an option: ";
 const string CONTINUE    = "Would you like to do something else? ";
 //const string PRINTOPTION = "Would you like to print report for preferred, "
@@ -93,6 +94,7 @@ enum GeneralMenu
 	EXPIRATIONS,
 	ADDMEMBER,
 	DELETEMEMBER,
+	ADDPURCHASE,
 	BASICTOPREF,
 	PREFTOBASIC,
 	PRINTPREFERRED,
@@ -128,6 +130,26 @@ int ErrorCheckInt(const int upperLim,	//IN - Upper bound for input
 char ErrorCheckChar(const char CHAR1,	 //IN -First Char for input
 					const char CHAR2,    //IN - Second Char for input
 					string prompt);		 //IN - String containing prompt
+
+/*************************************************************************
+ * FUNCTION  ErrorCheckFloat
+ * _______________________________________________________________________
+ *	This function Reads in, an upper and lower bound for a float
+ *	 input, as well as a string to prompt the user for that float input,
+ *	 it error checks and then returns that input
+ * _______________________________________________________________________
+ * PRE-CONDITIONS
+ *			upperLim:	Upper bound for input
+ *			lowerLim:	Lower bound for input
+ *			prompt:		String containing prompt for user input
+ *
+ * POST-CONDTIONS
+ *	This function returns the input
+ ************************************************************************/
+float ErrorCheckFloat(const float upperLim,	//IN - Upper bound for input
+					  const float lowerLim, //IN - Lower bound for input
+					  string prompt);		//IN - String containing prompt
+											//     for user input
 
 /*************************************************************************
  * PrintHeader
@@ -226,5 +248,15 @@ void FillMemberFile(vector<Basic>& basicList,	 // IN - Basic list
  *	 the file using the file specified by the program. -returns nothing.
  ************************************************************************/
 void FillHistoryFile(vector<History>& histList);   // IN - History list
+
+/*************************************************************************
+ * AddPurchase
+ *	This function receives  a basic members vector list, a preferred
+ *   members vector list and a history vector list. It then prompts the
+ *   user for some basic info and adds a purchase to the appropriate list.
+ ************************************************************************/
+void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
+			     vector<Preferred>& prefList,// IN - Preferred list
+			     vector<History>& histList); // IN - History list
 
 #endif /* HEADER_H_ */

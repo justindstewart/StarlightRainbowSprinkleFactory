@@ -22,6 +22,7 @@ class Basic
 		Basic(string newName, int newNumber, bool newMemType,
 			  float newAmtSpent, int newMonth, int newDay, int newYear);
 			//Non-Default Constructor
+		Basic(int newNumber);
 		virtual ~Basic();
 			//Destructor
 		void setName(string newName);
@@ -32,6 +33,7 @@ class Basic
 			//Function to set the member type
 		void setAmtSpent(float newAmtSpent);
 			//Function to manually set amount spent
+		void increaseAmtSpent(float newAmt);
 		void setExp(int newMonth, int newDay, int newYear);
 			//Function to manually set the expiration date
 		string getName() const;
@@ -51,7 +53,7 @@ class Basic
 		int getDay() const;
 		int getYear() const;
 
-		bool operator==(const Basic& obj) const;
+		friend bool operator==(const Basic& obj1, const Basic& obj2);
 			//Function to overload the == operator
 		bool operator!=(const Basic& obj) const;
 			//Function to overload the != operator

@@ -25,6 +25,11 @@ Basic::Basic(string newName, int newNumber, bool newMemType,
 	totalSpent = newAmtSpent;
 }//End Non-Default Constructor
 
+Basic::Basic(int newNumber)
+{
+	Basic();
+	memNumber = newNumber;
+}
 Basic::~Basic()
 {
 
@@ -50,6 +55,10 @@ void Basic::setAmtSpent(float newAmtSpent)
 	totalSpent = newAmtSpent;
 }//End setAmtSpent
 
+void Basic::increaseAmtSpent(float newAmt)
+{
+	totalSpent += newAmt;
+}
 void Basic::setExp(int newMonth, int newDay, int newYear)
 {
 	expDate.SetDate(newMonth, newDay, newYear);
@@ -123,9 +132,9 @@ void Basic::display(void) const
 	expDate.PrintDate();
 }//End display
 
-bool Basic::operator==(const Basic& obj) const
+bool operator==(const Basic& obj1, const Basic& obj2)
 {
-	return(memNumber==obj.memNumber);
+	return(obj1.memNumber==obj2.memNumber);
 }//End overload == operator
 
 bool Basic::operator!=(const Basic& obj) const

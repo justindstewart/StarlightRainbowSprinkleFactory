@@ -109,11 +109,11 @@ int main()
 			case PRINTQUANTITYOFITEM: cout << "Print quantity of what "
 					                  "item? ";
 			// read in item
-			getline(cin, searchItem);
-										// call function here
-			histObj.PrintQuantityOfItem(searchItem,
-						histList,
-						histObj);
+//			getline(cin, searchItem);
+//										// call function here
+//			histObj.PrintQuantityOfItem(searchItem,
+//						histList,
+//						histObj);
 					   break;
 			case PRINTQUANTITYOFALLITEMS:  cout << "Printing quantities of "
 					                      "all items\n";
@@ -143,6 +143,9 @@ int main()
 							  break;
 			case DELETEMEMBER:cout << "Deleting member:\n";
 							  DeleteMember(basicList, prefList);
+							  break;
+			case ADDPURCHASE: cout << "Adding purchase:\n";
+							  AddPurchase(basicList, prefList, histList);
 							  break;
 			case BASICTOPREF: cout << "Recommended Membership Upgrade: " << endl;
 							  StatusCheckBasic(basicList);

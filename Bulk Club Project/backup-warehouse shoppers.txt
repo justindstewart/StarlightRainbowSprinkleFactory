@@ -1,0 +1,48 @@
+Kathy Havealotsofkids
+12121
+Basic
+30/12/2014
+Sally Shopper
+12345
+Basic
+1/11/2014
+Benjamin Business
+16161
+Basic
+20/11/2014
+Linda Livesalone
+35647
+Basic
+15/12/2014
+Justin Stewart
+55555
+Basic
+14/3/2016
+Sam Saddleback
+61616
+Basic
+20/3/2015
+Larry Largefamily
+88888
+Basic
+1/2/2015
+Betty Buysalot
+12899
+Preferred
+25/1/2015
+Sam Single
+31311
+Preferred
+5/12/2014
+Sue Shoparound
+56723
+Preferred
+21/3/2015
+Fred Frugal
+67899
+Preferred
+15/12/2014
+Vern Video 
+77777
+Preferred
+15/11/2014
