@@ -471,10 +471,33 @@ void History::PrintTotalPurchases (vector<History> histVector,
 				cout << "----------------------------------------- " << "----------------";
 				cout << endl;
 
-				cout << left;
-				cout << setw(42) << "member name" << setw(15) << index->memNumber;
-				cout << endl;
-				cout << right;
+				vector<Basic>::iterator count;
+				for(count = basicVector.begin();
+					count != basicVector.end(); count++)
+				{
+					if(index->memNumber == count->getNumber())
+					{
+
+						cout << left;
+						cout << setw(42) << count->getName() << setw(15) << index->memNumber;
+						cout << endl;
+						cout << right;
+					}
+				}
+
+				vector<Preferred>::iterator counter;
+				for(counter = preferredVector.begin();
+					counter != preferredVector.end(); counter++)
+				{
+					if(index->memNumber == counter->getNumber())
+					{
+
+						cout << left;
+						cout << setw(42) << counter->getName() << setw(15) << index->memNumber;
+						cout << endl;
+						cout << right;
+					}
+				}
 
 				cout << endl;
 				cout << left << setw(30) << "ITEM NAME" << setw(11);
