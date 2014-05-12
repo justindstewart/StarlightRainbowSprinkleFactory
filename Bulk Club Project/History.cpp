@@ -439,9 +439,187 @@ void History::PrintPurchasesByMember(int searchIdF,
 		cout << "\nError, no data stored for member you entered\n";
 	}
 
-		// I NEED TO FIND A WAY TO LINK THE NAMES WITH THE NUMBERS
-//		cout << left << setw(30) << "Bulk Club Member" << setw(30)
-//			 << index->memNumber << endl;
+		// I NEED TO FIND A WAY TO LINK THE NAMES WITH THE NUMBER
+}
+
+
+void History::PrintTotalPurchases (vector<History> histVector,
+							       vector<Basic> basicVector,
+								   vector<Preferred> preferredVector,
+								   Basic basicObj,
+								   Preferred prefObj)
+{
+	float grandTotal;
+	grandTotal = 0;
+
+	cout << endl;
+
+	vector<History>::iterator index;
+
+	// sort the vector by ID numbers
+	sort(histVector.begin(), histVector.end());
+
+	// names are under the purchases, fix that
+
+		for(index = histVector.begin(); index != histVector.end(); index++)
+		{
+			if(index == histVector.begin() || index->memNumber != (index-1)->memNumber)
+			{
+				cout << endl;
+				cout << left << setw(42) << "MEMBER NAME" << setw(15) << "MEMBER NUMBER";
+				cout << endl;
+				cout << "----------------------------------------- " << "----------------";
+				cout << endl;
+
+				cout << left;
+				cout << setw(42) << "member name" << setw(15) << index->memNumber;
+				cout << endl;
+				cout << right;
+
+				cout << endl;
+				cout << left << setw(30) << "ITEM NAME" << setw(11);
+				cout << "TOTAL SOLD" << setw(19) << "TOTAL SALES PRICE";
+				cout << endl;
+				cout << "----------------------------- " << "---------- ";
+				cout << "----------------";
+				cout << right << endl;
+
+			}
+
+			if(index->memNumber == (index+1)->memNumber)
+			{
+//				cout << left;
+//				cout << setw(42) << "member name" << setw(15) << index->memNumber;
+//				cout << endl;
+//				cout << right;
+
+//				cout << endl;
+//				cout << left << setw(30) << "ITEM NAME" << setw(11);
+//				cout << "TOTAL SOLD" << setw(19) << "TOTAL SALES PRICE";
+//				cout << endl;
+//				cout << "----------------------------- " << "---------- ";
+//				cout << "----------------";
+//				cout << right << endl;
+			}
+
+			cout << left  << setw(30) << index->itemName << setw(11) << index->quantity;
+			cout << "$ "  << right << setw(6) << setprecision(2) << fixed << index->cost;
+			cout << right << endl;
+
+			grandTotal = grandTotal + index->cost;
+
+		}
+
+		cout << endl;
+		cout << "The grand total of all purchases is: $" << grandTotal;
+		cout << endl;
 
 }
 
+void History::PrintQuantityOfItem (string searchItem,
+								  vector <History> histVector,
+								  History histObj)
+{
+	char yesOrNo;
+
+	bool found;
+	found = false;
+
+	int amount;
+	amount = 0;
+
+	float totalSalesPrice;
+	totalSalesPrice = 0;
+
+	vector<History>::iterator index;
+
+	for(index = histVector.begin(); index != histVector.end(); index++)
+	{
+		if(searchItem == index->itemName)
+		{
+			found = true;
+		}
+	}
+
+
+	if(found)
+	{
+		for(index = histVector.begin(); index != histVector.end(); index++)
+		{
+			if(searchItem == index->itemName)
+			{
+				totalSalesPrice = totalSalesPrice + index->cost;
+
+				amount = amount + index->quantity;
+			}
+
+		}
+
+		cout << endl;
+		cout << left << setw(25) << "ITEM NAME" << setw(11);
+		cout << "TOTAL SOLD" << setw(19) << "TOTAL SALES PRICE";
+		cout << endl;
+		cout << "------------------------ " << "---------- ";
+		cout << "----------------";
+		cout << right << endl;
+
+		cout << left << setw(25) << searchItem << setw(11) << amount;
+		cout << "$ " << setw(16) << totalSalesPrice;
+		cout << endl;
+		cout << right << endl;
+	}
+	else
+	{
+		cout << "\nError, we don't have a record of that item being sold.";
+		cout << endl;
+	}
+
+	cout << endl;
+	yesOrNo = ErrorCheckChar('Y','N', "Would you like to search another item? ");
+
+	if (yesOrNo == 'Y')
+	{
+		// recursion?
+		cout << endl;
+		cout << "Print quantity of what item? "; // read in item
+		getline(cin, searchItem);
+		histObj.PrintQuantityOfItem(searchItem,
+									histVector,
+									histObj);
+	}
+
+	// write a check case function (toupper both strings)?
+}
+void History::PrintQuantityOfAllItems (vector <History> histVector)
+{
+	cout << endl;
+	cout << left << setw(30) << "ITEM NAME" << setw(15) << "QUANTITY SOLD";
+	cout << endl;
+	cout << "----------------------------- " << "--------------";
+	cout << right << endl;
+
+	vector<History>::iterator index;
+
+	// alphabetize
+
+//	for(index = histVector.begin(); index != histVector.end(); index++)
+//	{
+//		// if there is  a repeated instance, merge the quantities, delete the next one.
+////		if(histVector.at(index->itemName) == )
+////		{
+////			// sort using swap : histVector.swap()
+////		}
+//	}
+
+	for(index = histVector.begin(); index != histVector.end(); index++)
+	{
+		cout << left;
+		cout << setw(30) << index->itemName;
+		cout << setw(15) << index->quantity;
+		cout << right << endl;
+	}
+
+	// still need to alphabetize and condense items
+	// linked list again?
+	// remove duplicate items
+}
