@@ -616,6 +616,10 @@ void History::PrintQuantityOfItem (string searchItem,
 }
 void History::PrintQuantityOfAllItems (vector <History> histVector)
 {
+	int nextIndex;
+	nextIndex = 1;
+
+
 	cout << endl;
 	cout << left << setw(30) << "ITEM NAME" << setw(15) << "QUANTITY SOLD";
 	cout << endl;
@@ -624,26 +628,31 @@ void History::PrintQuantityOfAllItems (vector <History> histVector)
 
 	vector<History>::iterator index;
 
-	// alphabetize
+	// sort the vector by itemname
+	SortVectorByItemName(histVector);
 
-//	for(index = histVector.begin(); index != histVector.end(); index++)
-//	{
-//		// if there is  a repeated instance, merge the quantities, delete the next one.
-////		if(histVector.at(index->itemName) == )
-////		{
-////			// sort using swap : histVector.swap()
-////		}
-//	}
 
 	for(index = histVector.begin(); index != histVector.end(); index++)
 	{
-		cout << left;
-		cout << setw(30) << index->itemName;
+		if(index == histVector.begin() || index->itemName != (index-1)->itemName)
+		{
+			cout << left;
+			cout << setw(30) << index->itemName;
+
+		while((index+nextIndex)!= histVector.end() && index->itemName == (index+nextIndex)->itemName )
+		{
+				index->quantity = index->quantity + (index+nextIndex)->quantity;
+
+				nextIndex++;
+
+		}
+
+		nextIndex = 1;
+
 		cout << setw(15) << index->quantity;
 		cout << right << endl;
+
+		}
 	}
 
-	// still need to alphabetize and condense items
-	// linked list again?
-	// remove duplicate items
 }
