@@ -23,12 +23,19 @@ Your program should read from the daily sales file and update the members’ inf
 Generate the following reports/request at any time:
 
 -1.	A sales report for any given day. It should include a list of items and quantities sold on that day as well names of the members who shopped that day.  Report the total revenue for the given day.  It should also include number of preferred members and basic members who shopped during the given day.
+
 2.	A user should be able to enter a membership number or name and get a list of the total purchases per that member.
+
 3.	A report that prints the total purchases by all the members sorted by membership number.  It should also include a grand total of the purchases.
+
 4.	A user should be able to enter an item name and get the quantity of that item sold as well as the total sales price.
+
 5.	A report that prints out the quantity of each item sold sorted by item name.
+
 6.	A report that prints out the rebate of all the preferred members sorted by membership number.
+
 7.	A report showing the amount per year paid by each member for the membership dues sorted by member type (basic/preferred and then by member name.)
+
 8.	A user should be able to enter a month and get a list of all members whose memberships expire that month as well as their dues amount.
 
 -9.	A user should be able to add/delete members.   Create purchases for the new members to validate your code.  Updates should be saved between executions.
