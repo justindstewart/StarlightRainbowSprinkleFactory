@@ -35,10 +35,13 @@ class History
 		void setBuyDate(int newMonth, int newDay, int newYear);
 			//Function to set the purchase date
 		int getMonth() const;
+			//Function to get the month purchased
 		int getDay() const;
+			//Function to get the day purchased
 		int getYear() const;
-
+			//Function to get the year purchased
 		float calculateTotal(vector<History> histVector, int memberId) const;
+			//Function to calculate the total
 		string getName() const;
 			//Function to get the item name
 		int getNumber() const;
@@ -51,7 +54,6 @@ class History
 			//Function to display the current purchase stats
 		void print(vector<History> myVector);
 			//Function to print the data
-
 		bool operator==(const History& obj) const;
 
 		bool operator!=(const History& obj) const;
@@ -65,20 +67,24 @@ class History
 				                     Basic basicObj,
 				                     Preferred prefObj);
 				                     
-             	void PrintTotalPurchases (vector<History> histVector,
-				          vector<Basic> basicVector,
-					  vector<Preferred> preferredVector,
-					  Basic basicObj,
-					  Preferred prefObj);
+        void PrintTotalPurchases (vector<History> histVector,
+        						  vector<Basic> basicVector,
+        						  vector<Preferred> preferredVector,
+        						  Basic basicObj,
+        						  Preferred prefObj);
 
+        void PrintPurchasesByMemberName (string searchName,
+        								 vector<History> histVector,
+        								 vector<Basic> basicVector,
+        								 vector<Preferred> preferredVector);
 		void PrintPurchasesByMember(int searchIdF,
-					vector<History> histVector,
-					vector<Basic> basicVector,
-					vector<Preferred> preferredVector);
+									vector<History> histVector,
+									vector<Basic> basicVector,
+									vector<Preferred> preferredVector);
 
 		void PrintQuantityOfItem (string searchItem,
-					  vector <History> histVector,
-					  History histObj);
+					  	  	  	  vector <History> histVector,
+					  	  	  	  History histObj);
 
 		void PrintQuantityOfAllItems (vector <History> histVector);
 

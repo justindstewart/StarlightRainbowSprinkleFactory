@@ -157,7 +157,7 @@ void History::PrintSalesReportByDate (Date searchDateF,
 		                              Basic basicObj,
 		                              Preferred prefObj)
 	{
-		bool found;
+	bool found;
 	found = false;
 
 	int preferredCount;
@@ -217,7 +217,6 @@ void History::PrintSalesReportByDate (Date searchDateF,
 
 
 	bool temp;
-//	temp = false;
 
 	CustomerNode* head;
 	CustomerNode* tail;
@@ -233,7 +232,8 @@ void History::PrintSalesReportByDate (Date searchDateF,
 		if (searchDateF == index->buyDate)
 		{
 			vector<Basic>::iterator count;
-			for(count = basicVector.begin(); count != basicVector.end(); count++)
+			for(count = basicVector.begin();
+				count != basicVector.end(); count++)
 			{
 				if(index->memNumber == count->getNumber())
 				{
@@ -247,7 +247,6 @@ void History::PrintSalesReportByDate (Date searchDateF,
 						customerPtr->next = tail;
 						head = customerPtr;
 						tail = head;
-//						customerPtr = new CustomerNode;
 						head->previous = customerPtr;
 
 						basicCount = basicCount + 1;
@@ -277,7 +276,6 @@ void History::PrintSalesReportByDate (Date searchDateF,
 							customerPtr->next = tail;
 							head = customerPtr;
 							tail = head;
-//							customerPtr = new CustomerNode;
 							head->previous = customerPtr;
 
 							basicCount = basicCount + 1;
@@ -287,7 +285,8 @@ void History::PrintSalesReportByDate (Date searchDateF,
 			}
 
 			vector<Preferred>::iterator counter;
-			for(counter = preferredVector.begin(); counter != preferredVector.end(); counter++)
+			for(counter = preferredVector.begin();
+				counter != preferredVector.end(); counter++)
 			{
 				if(index->memNumber == counter->getNumber())
 				{
@@ -300,7 +299,6 @@ void History::PrintSalesReportByDate (Date searchDateF,
 						customerPtr->next = tail;
 						head = customerPtr;
 						tail = head;
-//						customerPtr = new CustomerNode;
 						head->previous = customerPtr;
 
 						preferredCount = preferredCount + 1;
@@ -330,7 +328,6 @@ void History::PrintSalesReportByDate (Date searchDateF,
 							customerPtr->next = tail;
 							head = customerPtr;
 							tail = head;
-//							customerPtr = new CustomerNode;
 							head->previous = customerPtr;
 
 							preferredCount = preferredCount + 1;
@@ -355,22 +352,116 @@ void History::PrintSalesReportByDate (Date searchDateF,
 		customerPtr = customerPtr->next;
 	}
 
-
-// RE- COUNT PREFERRED AND BASIC MEMBERS
-
 	cout << "\nThere were " << preferredCount;
-	// number of preferred members
 	cout << " preferred members and " << basicCount;
-	// number of basic members
 	cout << " basic members shopping on this date.\n";
 
-	} // end while
+	} // end if
 	else
 	{
 		cout << "\nError, we have no information stored for that date.\n";
 	}
 
 }
+
+void History::PrintPurchasesByMemberName(string searchName,
+								     vector<History> histVector,
+        						     vector<Basic> basicVector,
+        						     vector<Preferred> preferredVector)
+{
+	bool found;
+	found = false;
+
+	int nextIndex;
+	nextIndex = 1;
+
+	int searchIdF;
+
+	// sort the vector by itemname
+	SortVectorByItemName(histVector);
+
+	vector<Basic>::iterator index;
+
+	for(index = basicVector.begin(); index != basicVector.end(); index++)
+	{
+
+		if(searchName == index->getName())
+		{
+			found = true;
+			searchIdF = index->getNumber();
+
+		}
+
+	}
+
+	vector<Preferred>::iterator indexor;
+
+	for(indexor = preferredVector.begin(); indexor != preferredVector.end(); indexor++)
+	{
+
+		if(searchName == indexor->getName())
+		{
+			found = true;
+			searchIdF = indexor->getNumber();
+
+		}
+
+	}
+
+	if(found)
+	{
+	cout << "\nPrinting purchases made by member " << searchName << endl;
+
+
+	// FIND A WAY TO LINK THE NUMBER TO THE NAME
+
+	cout << endl;
+	cout << left << setw(30) << "ITEM NAME" << setw(15) << "QUANTITY SOLD";
+	cout << endl;
+	cout << "----------------------------- " << "--------------";
+	cout << right << endl;
+
+
+	vector<History>::iterator count;
+
+		for(count = histVector.begin(); count != histVector.end(); count++)
+		{
+		if (searchIdF== count->memNumber)
+		{
+
+			if(count == histVector.begin() || count->itemName != (count-1)->itemName)
+			{
+				cout << left;
+				cout << setw(30) << count->itemName;
+
+			while((count+nextIndex)!= histVector.end() && count->itemName == (count+nextIndex)->itemName )
+			{
+					count->quantity = count->quantity + (count+nextIndex)->quantity;
+
+					nextIndex++;
+
+			}
+
+			nextIndex = 1;
+
+			cout << setw(15) << count->quantity;
+			cout << right << endl;
+
+
+			}
+			}
+		}
+	}
+	else
+	{
+		cout << "\nError, no data stored for member you entered.\n";
+	}
+//
+//		// I NEED TO FIND A WAY TO LINK THE NAMES WITH THE NUMBERS
+
+}
+
+
 
 void History::PrintPurchasesByMember(int searchIdF,
 								     vector<History> histVector,
@@ -380,7 +471,14 @@ void History::PrintPurchasesByMember(int searchIdF,
 	bool found;
 	found = false;
 
+	int nextIndex;
+	nextIndex = 1;
+
+	// sort the vector by itemname
+	SortVectorByItemName(histVector);
+
 	vector<History>::iterator index;
+
 
 	for(index = histVector.begin(); index != histVector.end(); index++)
 	{
@@ -394,7 +492,9 @@ void History::PrintPurchasesByMember(int searchIdF,
 
 	if(found)
 	{
-	cout << "Printing purchases made by " << searchIdF << endl;
+	cout << "\nPrinting purchases made by member " << searchIdF << endl;
+
+
 	// FIND A WAY TO LINK THE NUMBER TO THE NAME
 
 	cout << endl;
@@ -404,45 +504,79 @@ void History::PrintPurchasesByMember(int searchIdF,
 	cout << right << endl;
 
 
-	for(index = histVector.begin(); index != histVector.end(); index++)
+		for(index = histVector.begin(); index != histVector.end(); index++)
 		{
-	if (searchIdF== index->memNumber)
-		{
-			vector<Basic>::iterator count;
-			for(count = basicVector.begin(); count != basicVector.end(); count++)
+		if (searchIdF== index->memNumber)
 			{
-				if(index->memNumber == count->getNumber())
+				vector<Basic>::iterator count;
+				for(count = basicVector.begin(); count != basicVector.end(); count++)
 				{
-					cout << left << setw(30) << index->itemName;
-					cout << setw(15) << index->quantity;
-					cout << right;
-					cout << endl;
-				}
-			}
+					if(index->memNumber == count->getNumber())
+					{
 
-			vector<Preferred>::iterator counter;
-			for(counter = preferredVector.begin(); counter != preferredVector.end(); counter++)
-			{
-				if(index->memNumber == counter->getNumber())
+						if(index == histVector.begin() || index->itemName != (index-1)->itemName)
+						{
+							cout << left;
+							cout << setw(30) << index->itemName;
+
+						while((index+nextIndex)!= histVector.end() && index->itemName == (index+nextIndex)->itemName )
+						{
+								index->quantity = index->quantity + (index+nextIndex)->quantity;
+
+								nextIndex++;
+
+						}
+
+						nextIndex = 1;
+
+						cout << setw(15) << index->quantity;
+						cout << right << endl;
+						}
+					}
+				}
+
+				vector<Preferred>::iterator counter;
+				for(counter = preferredVector.begin();
+					counter != preferredVector.end(); counter++)
 				{
-					cout << left << setw(30) << index->itemName;
-					cout << setw(15) << index->quantity;
-					cout << right;
-					cout << endl;
+					if(index->memNumber == counter->getNumber())
+					{
+//						cout << left << setw(30) << index->itemName;
+//						cout << setw(15) << index->quantity;
+//						cout << right;
+//						cout << endl;
+
+						if(index == histVector.begin() || index->itemName != (index-1)->itemName)
+						{
+							cout << left;
+							cout << setw(30) << index->itemName;
+
+						while((index+nextIndex)!= histVector.end() && index->itemName == (index+nextIndex)->itemName )
+						{
+								index->quantity = index->quantity + (index+nextIndex)->quantity;
+
+								nextIndex++;
+
+						}
+
+						nextIndex = 1;
+
+						cout << setw(15) << index->quantity;
+						cout << right << endl;
+						}
+					}
 				}
 			}
-		}
 
 		}
 	}
 	else
 	{
-		cout << "\nError, no data stored for member you entered\n";
+		cout << "\nError, no data stored for member you entered.\n";
 	}
 
-		// I NEED TO FIND A WAY TO LINK THE NAMES WITH THE NUMBER
+		// I NEED TO FIND A WAY TO LINK THE NAMES WITH THE NUMBERS
 }
-
 
 void History::PrintTotalPurchases (vector<History> histVector,
 							       vector<Basic> basicVector,
@@ -453,7 +587,7 @@ void History::PrintTotalPurchases (vector<History> histVector,
 	float grandTotal;
 	grandTotal = 0;
 
-	cout << endl;
+
 
 	vector<History>::iterator index;
 
@@ -508,22 +642,6 @@ void History::PrintTotalPurchases (vector<History> histVector,
 				cout << "----------------";
 				cout << right << endl;
 
-			}
-
-			if(index->memNumber == (index+1)->memNumber)
-			{
-//				cout << left;
-//				cout << setw(42) << "member name" << setw(15) << index->memNumber;
-//				cout << endl;
-//				cout << right;
-
-//				cout << endl;
-//				cout << left << setw(30) << "ITEM NAME" << setw(11);
-//				cout << "TOTAL SOLD" << setw(19) << "TOTAL SALES PRICE";
-//				cout << endl;
-//				cout << "----------------------------- " << "---------- ";
-//				cout << "----------------";
-//				cout << right << endl;
 			}
 
 			cout << left  << setw(30) << index->itemName << setw(11) << index->quantity;
@@ -654,5 +772,4 @@ void History::PrintQuantityOfAllItems (vector <History> histVector)
 
 		}
 	}
-
 }

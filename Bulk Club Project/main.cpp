@@ -41,6 +41,9 @@ int main()
 	int searchYear;				//IN - Variable to hold year to search for
 	Date searchDate;			//IN - Variable to hold entire date
 	int searchID;				//IN - Variable to hold the ID to search
+	int nameOrNumber;
+	string searchName;
+	string searchItem;
 
 	FillMemberList(basicList, prefList);
 	FillHistoryList(histList);
@@ -89,37 +92,50 @@ int main()
 			// output error not found
 
 			break;
-			case PRINTITEMSBYMEMBER: cout <<"Printing items purchased by "
-									 "which member?\n";
-			searchID = ErrorCheckInt( 99999,
-									  10000,
-									 "Please enter a member ID number: ");
-									// call function here
-			histObj.PrintPurchasesByMember(searchID, histList, basicList, prefList);
-									 break;
-			case PRINTTOTALPURCHASES: cout << "Printing purchases\n";
-									 // call function here
-			histObj.PrintTotalPurchases(histList,
-						basicList,
-						prefList,
-						basicObj,
-						prefObj);
+			case PRINTITEMSBYMEMBER: nameOrNumber = ErrorCheckInt(2, 1,
+								"Search member by name or ID number?"
+							"\n1 - Name\n2 - Number\nEnter an option: ");
+						if(nameOrNumber == 1)
+						{
+							cout << "\nWhich member would you like to search for? ";
+							getline(cin, searchName);
+							histObj.PrintPurchasesByMemberName(searchName,
+														   histList,
+														   basicList,
+														   prefList);
+						}
+						else if (nameOrNumber == 2)
+						{
+						searchID = ErrorCheckInt( 99999,
+												  10000,
+												 "Please enter a member ID number: ");
+												// call function here
+						histObj.PrintPurchasesByMember(searchID,
+													   histList,
+													   basicList,
+													   prefList);
+						}
 
-						   break;
+			// ADD OPTION FOR SEARCHING BY NAME
+												 break;
+			case PRINTTOTALPURCHASES: cout << "Printing purchases\n";
+												 // call function here
+						histObj.PrintTotalPurchases(histList,
+													basicList,
+													prefList,
+													basicObj,
+													prefObj);
+
+												   break;
 			case PRINTQUANTITYOFITEM: cout << "Print quantity of what "
-					                  "item? ";
-			// read in item
-//			getline(cin, searchItem);
-//										// call function here
-//			histObj.PrintQuantityOfItem(searchItem,
-//						histList,
-//						histObj);
-					   break;
-			case PRINTQUANTITYOFALLITEMS:  cout << "Printing quantities of "
-					                      "all items\n";
-										// call function here
-			histObj.PrintQuantityOfAllItems(histList);
-							  break;
+								                  "item? ";
+						// read in item
+						getline(cin, searchItem);
+													// call function here
+						histObj.PrintQuantityOfItem(searchItem,
+													histList,
+													histObj);
+												   break;
 			case PRINTREBATE: cout << "Printing rebate report: \n";
 							  PrintRebates(prefList);
 							  break;
