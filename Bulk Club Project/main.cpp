@@ -57,7 +57,7 @@ int main()
 		switch(userType)
 		{
 		case EXIT: break;
-		case MANAGER: managerCommand = ErrorCheckInt(8, 0, MANAGERMENU);
+		case MANAGER: managerCommand = ErrorCheckInt(7, 0, MANAGERMENU);
 					  cout << endl;
 					  break;
 		case GENERAL: generalCommand = ErrorCheckInt(9, 0, GENERALMENU);
@@ -126,9 +126,6 @@ int main()
 			case PRINTDUESREPORT: cout << "Printing dues report: \n";
 								  MembershipDues(basicList, prefList);
 								  break;
-			case MEMBEREXP: cout << "Member expiration report: \n";
-							MembershipExp(basicList, prefList);
-							break;
 			}
 		}
 
@@ -139,7 +136,7 @@ int main()
 			case GENERALEXIT: break;
 			case EXPIRATIONS: cout << "\nChecking whose membership "
 					          "expires\n";
-							  // call function here
+							  MembershipExp(basicList, prefList);
 							  break;
 			case ADDMEMBER:   cout << "Adding member:\n";
 							  AddMember(basicList, prefList);

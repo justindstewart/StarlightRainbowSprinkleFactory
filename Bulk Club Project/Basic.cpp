@@ -9,17 +9,17 @@
 
 #include "header.h"
 
-Basic::Basic() : name("Pat Doe"), memNumber(11111), memType(0),
+Basic::Basic() : name("Sterling Archer"), memNumber(11111), memType(0),
 				 totalSpent(0)
 {
-	//Empty Block
+
 }//End Default Constructor
 
 Basic::Basic(string newName, int newNumber, bool newMemType,
 			 float newAmtSpent, int newMonth, int newDay, int newYear) :
 			 expDate(newMonth, newDay, newYear)
 {
-	name = newName;
+	name  = newName;
 	memNumber = newNumber;
 	memType = newMemType;
 	totalSpent = newAmtSpent;

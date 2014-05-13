@@ -37,6 +37,8 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
 	int buyYear;		//CALC  - Year variable post string conversion
 	bool validId;		//CALC  - Checks for repeating member numbers
 	History obj;		//IN 	- History object for adding purchase
+	int itemCount;
+	bool addMore;
 
 	//DO - Checks to make sure member ID is valid and exists
 	do
@@ -53,36 +55,57 @@ void AddPurchase(vector<Basic>& basicList,	 // IN - Basic list
 
 	}while(!validId);//END DO WHILE
 
-	cout << "Please enter an item name: ";
-	getline(cin, tempName);
+	itemCount = 0;
 
-	cout << "Please enter a sale date: " << endl;
-	buyMonth = ErrorCheckInt(12, 1, "Month: ");
-	buyDay = ErrorCheckInt(31, 1, "Day: ");
-	buyYear = ErrorCheckInt(2014, 2013, "Year: ");
-
-	tempCost = ErrorCheckFloat(10000, .01, "Please enter a cost: ");
-
-	tempQuantity = ErrorCheckInt(10000, 1, "Please enter a quantity: ");
-
-	obj.setName(tempName);
-	obj.setNumber(tempId);
-	obj.setCost(tempCost);
-	obj.setQuantity(tempQuantity);
-	obj.setBuyDate(buyMonth, buyDay, buyYear);
-	histList.push_back(obj);
-
-	//IF - Searches member lists to find member ID and updates total spent
-	if(find(basicList.begin(), basicList.end(), Basic(tempId)) != basicList.end())
+	do
 	{
-		vector<Basic>::iterator basicIter;	//IN - Iterator for basic class
-		basicIter = find(basicList.begin(), basicList.end(), Basic(tempId));
-		basicIter->increaseAmtSpent(tempCost * tempQuantity);
-	}
-	else
-	{
-		vector<Preferred>::iterator prefIter; //IN - Iterator for preferred class
-		prefIter = find(prefList.begin(), prefList.end(), tempId);
-		prefIter->increaseAmtSpent(tempCost * tempQuantity);
-	}//END If
+		addMore = true;
+
+		cout << "Please enter an item name: ";
+		getline(cin, tempName);
+
+		cout << "Please enter a sale date: " << endl;
+		buyMonth = ErrorCheckInt(12, 1, "Month: ");
+		buyDay = ErrorCheckInt(31, 1, "Day: ");
+		buyYear = ErrorCheckInt(2014, 2013, "Year: ");
+
+		tempCost = ErrorCheckFloat(10000, .01, "Please enter a cost: ");
+
+		tempQuantity = ErrorCheckInt(100 - itemCount, 1, "Please enter a quantity(MAX 100 PER DAY): ");
+
+		itemCount += tempQuantity;
+
+		obj.setName(tempName);
+		obj.setNumber(tempId);
+		obj.setCost(tempCost);
+		obj.setQuantity(tempQuantity);
+		obj.setBuyDate(buyMonth, buyDay, buyYear);
+		histList.push_back(obj);
+
+		//IF - Searches member lists to find member ID and updates total spent
+		if(find(basicList.begin(), basicList.end(), Basic(tempId)) != basicList.end())
+		{
+			vector<Basic>::iterator basicIter;	//IN - Iterator for basic class
+			basicIter = find(basicList.begin(), basicList.end(), Basic(tempId));
+			basicIter->increaseAmtSpent(tempCost * tempQuantity);
+		}
+		else
+		{
+			vector<Preferred>::iterator prefIter; //IN - Iterator for preferred class
+			prefIter = find(prefList.begin(), prefList.end(), tempId);
+			prefIter->increaseAmtSpent(tempCost * tempQuantity);
+		}//END If
+
+		if(itemCount == 100)
+		{
+			cout << "Maximum quantity reached!" << endl;
+			addMore = false;
+		}
+		else if(ErrorCheckChar('Y', 'N', "Would you like to add another? ") == 'N')
+		{
+			addMore = false;
+		}
+
+	}while(addMore);
+
 }
