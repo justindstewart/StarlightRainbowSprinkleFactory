@@ -136,6 +136,11 @@ int main()
 													histList,
 													histObj);
 												   break;
+			case PRINTQUANTITYOFALLITEMS: cout << "Printing quantities of "
+								                      "all items\n";
+													// call function here
+						histObj.PrintQuantityOfAllItems(histList);
+													  break;
 			case PRINTREBATE: cout << "Printing rebate report: \n";
 							  PrintRebates(prefList);
 							  break;
@@ -150,8 +155,7 @@ int main()
 			switch(generalCommand)
 			{
 			case GENERALEXIT: break;
-			case EXPIRATIONS: cout << "\nChecking whose membership "
-					          "expires\n";
+			case EXPIRATIONS: cout << "Checking whose membership expires\n";
 							  MembershipExp(basicList, prefList);
 							  break;
 			case ADDMEMBER:   cout << "Adding member:\n";

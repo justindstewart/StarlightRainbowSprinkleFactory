@@ -648,7 +648,7 @@ void History::PrintTotalPurchases (vector<History> histVector,
 			cout << "$ "  << right << setw(6) << setprecision(2) << fixed << index->cost;
 			cout << right << endl;
 
-			grandTotal = grandTotal + index->cost;
+			grandTotal = grandTotal + (index->cost * index->quantity);
 
 		}
 
@@ -690,7 +690,7 @@ void History::PrintQuantityOfItem (string searchItem,
 		{
 			if(searchItem == index->itemName)
 			{
-				totalSalesPrice = totalSalesPrice + index->cost;
+				totalSalesPrice = totalSalesPrice + (index->cost * index->quantity);
 
 				amount = amount + index->quantity;
 			}
